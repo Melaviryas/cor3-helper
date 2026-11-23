@@ -1,9 +1,8 @@
-import { getCor3Tab } from './utils.js';
+import { getCor3Tab, formatTimeRemaining } from './utils.js';
 import { state as popupState } from './state.js';
 import { savePinnedState, renderPinnedTimers } from './pinned-timers.js';
 import { EXPEDITION_KEYS, SALE_MODES, normalizeExpeditionSettings, expeditionEnabled, saleModeLabel } from '../shared/expedition-settings.js';
 import { DRONE_MATERIALS } from '../shared/selective-loot-policy.js';
-import { itemQuantity, isDroneMaterial, lootName } from '../shared/expedition-sale-policy.js';
 import { mercList } from '../shared/expedition-workflow.js';
 
 const byId = id => document.getElementById(id);
@@ -28,11 +27,7 @@ function node(tag, className, text) {
     return element;
 }
 function remaining(end) {
-    const ms = new Date(end).getTime() - Date.now();
-    if (!Number.isFinite(ms)) return '时间未知';
-    if (ms <= 0) return '等待状态刷新';
-    const minutes = Math.ceil(ms / 60000), hours = Math.floor(minutes / 60);
-    return (hours ? hours + ' 小时 ' : '') + minutes % 60 + ' 分钟';
+    return Number.isFinite(new Date(end).getTime()) ? formatTimeRemaining(end) : '时间未知';
 }
 const number = value => Number.isFinite(value) ? value.toLocaleString() : '--';
 const names = { RUNNING: 'Running', IN_PROGRESS: 'Running', EVENT: 'Awaiting decision', COMPLETED: 'Completed', FAILED: 'Failed',
@@ -100,7 +95,7 @@ for (const mode of SALE_MODES) {
 }
 for (const [id, action, data] of [
     ['refreshExpeditionBtn', 'expeditionRefresh', { mercs: false }], ['refreshMercenariesBtn', 'expeditionRefresh', { mercs: true }],
-    ['refreshInventoryBtn', 'expeditionRefresh', { mercs: false }], ['refreshArchivedBtn', 'expeditionRefresh', { mercs: false }],
+    ['refreshArchivedBtn', 'expeditionRefresh', { mercs: false }],
     ['checkExpeditionMailBtn', 'checkExpeditionMail'], ['expeditionCheckNowBtn', 'expeditionCheckNow']
 ]) byId(id).addEventListener('click', event => { event.preventDefault(); event.stopPropagation(); send(action, data, byId(id)); });
 
@@ -243,59 +238,6 @@ function renderMercs() {
         container.append(details);
     }
 }
-function renderMaterials() {
-    const counts = new Map();
-    for (const item of cache.stashData?.items || []) counts.set(item.itemConfigId, (counts.get(item.itemConfigId) || 0) + itemQuantity(item));
-    const table = node('table', 'exp-material-table'), head = node('tr');
-    head.append(node('th', '', '无人机材料'), node('th', '', '持有数量')); table.append(head);
-    for (const item of DRONE_MATERIALS) { const row = node('tr'); row.append(node('td', '', item.name), node('td', '', counts.get(item.id) || 0)); table.append(row); }
-    byId('personalDroneContainer').replaceChildren(table);
-}
-function renderInventory() {
-    const container = byId('inventoryContainer'); container.replaceChildren();
-    const stash = cache.stashData;
-    byId('spaceInfo').textContent = stash ? `${stash.currentUsage ?? '?'} / ${stash.maxCapacity ?? '?'}` : '-- / --';
-    const items = stash?.items || [];
-    const total = items.filter(item => item.canSell && Number.isFinite(item.sellPrice)).reduce((sum, item) => sum + item.sellPrice * itemQuantity(item), 0);
-    byId('totalValue').textContent = `可售物品按当前单价合计：${number(total)} CR`;
-    for (const item of [...items].sort((a, b) => (b.sellPrice || 0) - (a.sellPrice || 0))) {
-        const details = node('details', 'exp-material-details'), summary = node('summary', '', `${lootName(item)} ×${itemQuantity(item)}${isDroneMaterial(item) ? ' · 无人机材料' : ''}`);
-        details.append(summary);
-        const body = node('div', 'exp-item-detail');
-        if (item.imageUrl?.startsWith('https://')) { const img = node('img'); img.src = item.imageUrl; img.alt = lootName(item); img.style.cssText = 'width:40px;height:40px;object-fit:contain;'; body.append(img); }
-        body.append(detail('品质', translated(item.tier)), detail('可出售', item.canSell ? '是' : '否'));
-        if (item.description) body.append(node('div', '', item.description));
-        if (item.canSell) body.append(detail('单价', number(item.sellPrice) + ' CR'));
-        if (item.canCraft) body.append(detail('可用于制作', '是'));
-        if (item.canUse) body.append(detail('可使用', '是'));
-        if (item.canSell && !item.locked && !item.pinned) {
-            const button = node('button', 'refresh-btn-small', '手动出售 1 件'); button.type = 'button'; button.dataset.expAction = '';
-            button.disabled = !expeditionEnabled(settings); let confirming = false;
-            button.addEventListener('click', () => {
-                if (!confirming) { confirming = true; button.textContent = '再次点击确认出售'; setTimeout(() => { confirming = false; button.textContent = '手动出售 1 件'; }, 3000); return; }
-                confirming = false; send('expeditionManualSell', { itemId: item.id }, button);
-            }); body.append(button);
-        }
-        details.append(body); container.append(details);
-    }
-    renderSpecialists(); renderMaterials();
-}
-function renderSpecialists() {
-    const container = byId('specialistTimerInfo'); container.replaceChildren();
-    for (const specialist of cache.specialistsData?.specialists || []) for (const temp of specialist.temporary || []) {
-        if (!temp.owned || !temp.expiresAt) continue;
-        const card = node('div', 'expedition-card');
-        card.append(detail('临时仓库扩容', `${temp.bonusSlots ?? '?'} 格`));
-        const end = temp.status === 'IN_GRACE' ? temp.gracePeriodEndAt : temp.expiresAt;
-        const timer = node('div', 'exp-hint', remaining(end)); timer.dataset.expEnd = end; card.append(timer);
-        if (temp.status === 'IN_GRACE') card.append(node('div', 'exp-hint', '租期已结束，请留意游戏内的宽限期与物品损失提示。'));
-        const price = temp.prices?.find(price => !price.items?.length) || temp.prices?.[0];
-        if (price?.id) card.append(actionButton(`续租（${number(price.credits)} CR）`, 'expeditionExtendStash', { data: {
-            specialistType: specialist.specialistType || 'ENGINEER', kind: temp.kind || 'TEMPORARY', level: temp.level, priceId: price.id
-        } }));
-        container.append(card);
-    }
-}
 function renderArchive() {
     const container = byId('archivedExpContainer'); container.replaceChildren();
     const data = cache.archivedExpeditionsData;
@@ -341,12 +283,12 @@ for (const item of DRONE_MATERIALS) byId('droneMaterialsKeepList').append(node('
 chrome.storage.sync.get([...EXPEDITION_KEYS, 'mercDebugConsoleEnabled'], data => {
     settings = normalizeExpeditionSettings(data); showLogs(data.mercDebugConsoleEnabled !== false); renderSettings(); renderMercs();
 });
-chrome.storage.local.get(localKeys, data => { cache = data; renderActive(); renderMercs(); renderInventory(); renderArchive(); renderLogs(); renderSummary(); });
+chrome.storage.local.get(localKeys, data => { cache = data; renderActive(); renderMercs(); renderArchive(); renderLogs(); renderSummary(); });
 chrome.storage.onChanged.addListener((changes, area) => {
     if (area === 'sync') {
         if (EXPEDITION_KEYS.some(key => changes[key])) {
             for (const key of EXPEDITION_KEYS) if (changes[key]) settings[key] = changes[key].newValue;
-            settings = normalizeExpeditionSettings(settings); renderSettings(); renderMercs(); renderActive(); renderInventory();
+            settings = normalizeExpeditionSettings(settings); renderSettings(); renderMercs(); renderActive();
         }
         if (changes.mercDebugConsoleEnabled) showLogs(changes.mercDebugConsoleEnabled.newValue !== false);
     }
@@ -354,7 +296,6 @@ chrome.storage.onChanged.addListener((changes, area) => {
         for (const key of localKeys) if (changes[key]) cache[key] = changes[key].newValue;
         if (changes.expeditionsData) renderActive();
         if (changes.mercenariesData || changes.usolMercenariesData || changes.mercConfigData) renderMercs();
-        if (changes.stashData || changes.specialistsData) renderInventory();
         if (changes.archivedExpeditionsData) renderArchive();
         if (changes.mercDebugLogs) renderLogs();
         renderSummary();

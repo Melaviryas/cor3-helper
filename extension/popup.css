@@ -2845,3 +2845,9 @@
         }
 
 html[lang="zh-CN"] .option-row.confirming .option-label::after { content: " — 点击确认"; }
+
+/* Independent expedition panels and the original, untranslated inventory cards. */
+.exp-debug-switch { margin-left:auto; flex-shrink:0; }
+.inventory-original { padding:0 9px 9px; }
+.inventory-original .market-sub-header { margin-bottom:0; }
+.inventory-original .item-card { min-width:0; }

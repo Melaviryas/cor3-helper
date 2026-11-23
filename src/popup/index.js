@@ -9,6 +9,7 @@ import './pinned-timers.js';
 import './markets.js';
 import './ui-toggles.js';
 import './expedition-ui.js';
+import './inventory.js';
 import './loadout.js';
 import './auto-job-solver-ui.js';
 import './failed-jobs-ui.js';

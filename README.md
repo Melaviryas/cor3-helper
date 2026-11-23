@@ -12,12 +12,12 @@ Credit for the original extension and its foundation goes to **femtacore and the
 
 ## Changes in This Fork
 
-- **English / Simplified Chinese interface switching**, with a saved preference shared by the popup, side panel, popout, and DevTools pages. Game item names and raw protocol data retain their original text.
+- **English / Simplified Chinese interface switching**, with a saved preference shared by the popup, side panel, popout, and DevTools pages. Game item names and raw protocol data retain their original text. Inventory keeps its original English interface; timers keep their original h/m/s format.
 - **Collapsible Markets and Loadout groups** and a reorganized layout.
 - **Actual-Power AutoJobs loadout selection**, with software-only or combined software and hardware optimization.
 - **One-click failed-job cleanup across all markets**, refreshing every market before cleanup.
 - **Improved minigame-lock retry scheduling** and longer Decrypt / ICE Wall waiting periods.
-- **An integrated Expedition module** with a master switch, collapsible sections, status summaries, nested decisions, and debug logs.
+- **An integrated Expedition module** with a master switch, collapsible sections, status summaries, separate Active Expedition, Decisions, and Debug Console panels.
 - **Unified expedition dispatch**, combining completion-triggered checks and a 30-minute timer with ordered reward collection, selling, and dispatch.
 - **Automatic expedition reward-mail claiming** without opening Stash.
 - **Four mutually exclusive loot-selling modes:** Off, When Stash Is Full, Non-Drone Loot, and All Sellable Expedition Loot—including drone materials. Each mode has its own explanation and a collapsed status badge.

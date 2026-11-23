@@ -2,6 +2,7 @@ import { _h, _noData, _clearEl, _safeSetHtml } from './dom-helpers.js';
 import { getCor3Tab } from './utils.js';
 import { refreshAllTimestamps } from './timestamps.js';
 import { state } from './state.js';
+import { translateUiText } from '../shared/ui-i18n.js';
 
 const inventoryContainer = document.getElementById('inventoryContainer');
 const inventorySectionToggle = document.getElementById('inventorySectionToggle');
@@ -9,6 +10,34 @@ const inventorySectionBody = document.getElementById('inventorySectionBody');
 const spaceInfo = document.getElementById('spaceInfo');
 const refreshInventoryBtn = document.getElementById('refreshInventoryBtn');
 const specialistTimerInfo = document.getElementById('specialistTimerInfo');
+let inventoryEnabled = false;
+function updateInventoryPermissions() {
+    for (const button of document.querySelectorAll('#inventorySection .sell-btn, #inventorySection #stashExtendBtn, #refreshInventoryBtn')) {
+        button.disabled = !inventoryEnabled || button.dataset.unsellable === 'true';
+    }
+}
+function loadInventoryPermissions() {
+    chrome.storage.sync.get(['expeditionModuleEnabled', 'helperMode'], data => {
+        inventoryEnabled = data.expeditionModuleEnabled === true && data.helperMode !== true;
+        updateInventoryPermissions();
+    });
+}
+async function inventoryAction(message) {
+    if (!inventoryEnabled) throw new Error('Enable the Expedition master switch first.');
+    const tab = await getCor3Tab();
+    if (!tab) throw new Error('Open cor3.gg first.');
+    const result = await chrome.tabs.sendMessage(tab.id, message);
+    if (result?.success === false) throw new Error(translateUiText(result.message || 'Request failed.', 'en'));
+    document.getElementById('inventoryActionStatus').textContent = '';
+    return result;
+}
+function showInventoryError(error) {
+    document.getElementById('inventoryActionStatus').textContent = translateUiText(error.message, 'en');
+}
+loadInventoryPermissions();
+chrome.storage.onChanged.addListener((changes, area) => {
+    if (area === 'sync' && (changes.expeditionModuleEnabled || changes.helperMode)) loadInventoryPermissions();
+});
 
 inventorySectionToggle.addEventListener('click', () => {
     inventorySectionToggle.classList.toggle('open');
@@ -21,12 +50,8 @@ export async function requestAndLoadInventory() {
     inventoryContainer.replaceChildren(_noData('Requesting inventory from server...'));
     spaceInfo.textContent = '-- / --';
     try {
-        const tab = await getCor3Tab();
-        if (tab) {
-            await chrome.tabs.sendMessage(tab.id, { action: "requestStash" });
-            await chrome.tabs.sendMessage(tab.id, { action: "requestSpecialists" });
-        }
-    } catch (e) {}
+        await inventoryAction({ action: 'expeditionRefresh', mercs: false });
+    } catch (e) { showInventoryError(e); }
     setTimeout(() => {
         loadInventory();
         loadSpecialistTimers();
@@ -157,25 +182,27 @@ async function renderSpecialistTimers(data) {
                 extBtn.textContent = 'Extending...';
                 getCor3Tab().then(function (tab) {
                     if (!tab) { extBtn.disabled = false; extBtn.textContent = 'Extend (💰' + (extendCredits || '?').toLocaleString() + ')'; return; }
-                    chrome.tabs.sendMessage(tab.id, {
-                        action: 'purchaseSpecialist',
+                    inventoryAction({
+                        action: 'expeditionExtendStash', data: {
                         specialistType: activeSpecialist.specialistType || 'ENGINEER',
                         kind: activeTemp.kind || 'TEMPORARY',
                         level: activeTemp.level,
-                        priceId: extendPriceId
+                        priceId: extendPriceId }
                     }).then(function () {
                         extBtn.textContent = 'Sent! Refreshing...';
                         setTimeout(function () {
-                            chrome.tabs.sendMessage(tab.id, { action: 'requestSpecialists' });
+                            inventoryAction({ action: 'expeditionRefresh', mercs: false }).catch(showInventoryError);
                         }, 2000);
                         setTimeout(function () { loadSpecialistTimers(); }, 4000);
-                    }).catch(function () {
-                        extBtn.disabled = false;
+                    }).catch(function (error) {
+                        showInventoryError(error);
+                        extBtn.disabled = !inventoryEnabled;
                         extBtn.textContent = 'Extend (💰' + (extendCredits || '?').toLocaleString() + ')';
                     });
                 });
             });
         }
+        updateInventoryPermissions();
 
         if (expiryRemaining <= 0 && (graceRemaining === null || graceRemaining <= 0)) {
             if (state._specialistTimerInterval) { clearInterval(state._specialistTimerInterval); state._specialistTimerInterval = null; }
@@ -269,9 +296,11 @@ function renderInventory(data) {
             btn.disabled = true;
             btn.textContent = '⏳';
             try {
-                const tab = await getCor3Tab();
-                if (tab) await chrome.tabs.sendMessage(tab.id, { action: 'sellItem', itemId, quantity: 1 });
+                await inventoryAction({ action: 'expeditionManualSell', itemId });
             } catch (err) {
+                showInventoryError(err);
+                btn.disabled = !inventoryEnabled;
+                btn.textContent = '💰 Sell';
                 cor3LogError('popup.js', err, { action: 'sellItem' });
             }
         });
@@ -284,6 +313,11 @@ function renderInventory(data) {
             if (!isNaN(idx) && invItemMap[idx]) showInventoryInfoPopup(invItemMap[idx]);
         });
     });
+    inventoryContainer.querySelectorAll('.sell-btn').forEach(button => {
+        const item = data.items.find(item => item.id === button.dataset.itemId);
+        button.dataset.unsellable = String(!!(item?.locked || item?.isLocked || item?.pinned || item?.isPinned));
+    });
+    updateInventoryPermissions();
 }
 
 function showInventoryInfoPopup(item) {

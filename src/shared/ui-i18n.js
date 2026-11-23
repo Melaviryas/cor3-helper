@@ -16,36 +16,31 @@ function exact(value, language) {
 }
 const templates = [];
 const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-function template(en, zh) {
+function template(en, zh, numeric = false) {
     const compile = text => {
         const indices = [];
         const source = text.split(/(\{\d+\})/g).map(part => {
             const match = /^\{(\d+)\}$/.exec(part);
             if (!match) return escape(part).replace(/\s+/g, '\\s*');
-            indices.push(Number(match[1])); return '([\\s\\S]+?)';
+            indices.push(Number(match[1])); return numeric ? '(\\d+)' : '([\\s\\S]+?)';
         }).join('');
         return { regex: new RegExp('^' + source + '$', 'i'), indices };
     };
     templates.push({ en, zh, enMatch: compile(en), zhMatch: compile(zh) });
 }
 
-template('Updated {0}m ago', '{0} 分钟前更新');
+template('Updated {0}m ago', '{0} 分钟前更新', true);
 template('Market-{0}', '市场 {0}');
 template('Reputation — Level {0}', '声望 — 等级 {0}');
 template('Expand {0}', '展开 {0}');
 template('Collapse {0}', '收起 {0}');
 template('{0} Market', '{0} 市场');
-template('{0}m {1}s', '{0} 分钟 {1} 秒');
 template('{0} entries', '{0} 条记录');
 template('({0} entries)', '（{0} 条记录）');
 template('{0}-now', '{0}-现在');
-template('Updated {0}h {1}m ago', '{0} 小时 {1} 分钟前更新');
-template('{0}h:{1}m:{2}s', '{0}小时:{1}分钟:{2}秒');
-template('{0}h {1}m {2}s', '{0}小时 {1}分钟 {2}秒');
-template('{0}h {1}m', '{0} 小时 {1} 分钟');
-template('{0} min', '{0} 分钟');
-template('{0}m remaining', '剩余 {0} 分钟');
-template('{0}m ago', '{0} 分钟前');
+template('Updated {0}h {1}m ago', '{0} 小时 {1} 分钟前更新', true);
+template('{0}m remaining', '剩余 {0}m', true);
+template('{0}m ago', '{0}m 前', true);
 template('{0} pending', '{0} 项待处理');
 template('({0} pending)', '（{0} 项待处理）');
 template('({0} servers)', '（{0} 台服务器）');
@@ -87,8 +82,8 @@ template('Loadout: requesting fresh data via WS...', '配置：正在通过 WebS
 template('Job completed: {0}', '任务已完成：{0}');
 template('Job failed: {0}', '任务失败：{0}');
 template('Seller error: {0}', '出售程序错误：{0}');
-template('Minigame locked (~{0}m remaining)', '小游戏已锁定（约剩余 {0} 分钟）');
-template('Minigame lock (~{0}m remaining)', '小游戏锁定（约剩余 {0} 分钟）');
+template('Minigame locked (~{0}m remaining)', '小游戏已锁定（约剩余 {0}m）', true);
+template('Minigame lock (~{0}m remaining)', '小游戏锁定（约剩余 {0}m）', true);
 template('{0} (expired)', '{0}（已过期）');
 template('Game unavailable: {0}; refresh the game after updating the extension.', '无法连接游戏：{0}；更新扩展后请刷新游戏。');
 template('Server confirmed expedition {0}', '服务器已确认远征 {0}');
@@ -120,8 +115,9 @@ export function translateUiText(value, language = DEFAULT_UI_LANGUAGE, depth = 0
     const source = white[2];
     let text = exact(source, language);
     if (text !== null) return white[1] + text + white[3];
-    const hours = (language === 'zh-CN' ? /^(\d+)h$/i : /^(\d+)\s*小时$/).exec(source);
-    if (hours) return white[1] + hours[1] + (language === 'en' ? 'h' : ' 小时') + white[3];
+    // Duration tokens are display data in both languages, never translation patterns.
+    // In particular, the m/s in Markets, Timers, and Toggles are ordinary letters.
+    if (/^(?:\d+\s*[dhms](?::|\s|$)\s*)+$/i.test(source) || /^\d{1,2}:\d{2}(?::\d{2})?$/.test(source)) return value;
     // Message bodies, names, IDs, filenames and user-entered values never go through a broad word substitution.
     for (const item of templates) {
         const rule = language === 'en' ? item.zhMatch : item.enMatch;

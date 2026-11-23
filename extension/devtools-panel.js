@@ -2596,6 +2596,26 @@
     [
       "Mercenary refresh returned incomplete data",
       "\u4F63\u5175\u5237\u65B0\u8FD4\u56DE\u4E0D\u5B8C\u6574"
+    ],
+    [
+      "CORE Market Jobs",
+      "CORE \u5E02\u573A\u4EFB\u52A1"
+    ],
+    [
+      "BMI-ZEN Market Jobs",
+      "BMI-ZEN \u5E02\u573A\u4EFB\u52A1"
+    ],
+    [
+      "BMI-ZEN RM7 Market Jobs",
+      "BMI-ZEN RM7 \u5E02\u573A\u4EFB\u52A1"
+    ],
+    [
+      "SOYUZ RM7 Market Jobs",
+      "SOYUZ RM7 \u5E02\u573A\u4EFB\u52A1"
+    ],
+    [
+      "USOL RM7 Market Jobs",
+      "USOL RM7 \u5E02\u573A\u4EFB\u52A1"
     ]
   ];
 
@@ -2619,36 +2639,31 @@
   }
   var templates = [];
   var escape = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  function template(en, zh) {
+  function template(en, zh, numeric = false) {
     const compile = (text) => {
       const indices = [];
       const source = text.split(/(\{\d+\})/g).map((part) => {
         const match = /^\{(\d+)\}$/.exec(part);
         if (!match) return escape(part).replace(/\s+/g, "\\s*");
         indices.push(Number(match[1]));
-        return "([\\s\\S]+?)";
+        return numeric ? "(\\d+)" : "([\\s\\S]+?)";
       }).join("");
       return { regex: new RegExp("^" + source + "$", "i"), indices };
     };
     templates.push({ en, zh, enMatch: compile(en), zhMatch: compile(zh) });
   }
-  template("Updated {0}m ago", "{0} \u5206\u949F\u524D\u66F4\u65B0");
+  template("Updated {0}m ago", "{0} \u5206\u949F\u524D\u66F4\u65B0", true);
   template("Market-{0}", "\u5E02\u573A {0}");
   template("Reputation \u2014 Level {0}", "\u58F0\u671B \u2014 \u7B49\u7EA7 {0}");
   template("Expand {0}", "\u5C55\u5F00 {0}");
   template("Collapse {0}", "\u6536\u8D77 {0}");
   template("{0} Market", "{0} \u5E02\u573A");
-  template("{0}m {1}s", "{0} \u5206\u949F {1} \u79D2");
   template("{0} entries", "{0} \u6761\u8BB0\u5F55");
   template("({0} entries)", "\uFF08{0} \u6761\u8BB0\u5F55\uFF09");
   template("{0}-now", "{0}-\u73B0\u5728");
-  template("Updated {0}h {1}m ago", "{0} \u5C0F\u65F6 {1} \u5206\u949F\u524D\u66F4\u65B0");
-  template("{0}h:{1}m:{2}s", "{0}\u5C0F\u65F6:{1}\u5206\u949F:{2}\u79D2");
-  template("{0}h {1}m {2}s", "{0}\u5C0F\u65F6 {1}\u5206\u949F {2}\u79D2");
-  template("{0}h {1}m", "{0} \u5C0F\u65F6 {1} \u5206\u949F");
-  template("{0} min", "{0} \u5206\u949F");
-  template("{0}m remaining", "\u5269\u4F59 {0} \u5206\u949F");
-  template("{0}m ago", "{0} \u5206\u949F\u524D");
+  template("Updated {0}h {1}m ago", "{0} \u5C0F\u65F6 {1} \u5206\u949F\u524D\u66F4\u65B0", true);
+  template("{0}m remaining", "\u5269\u4F59 {0}m", true);
+  template("{0}m ago", "{0}m \u524D", true);
   template("{0} pending", "{0} \u9879\u5F85\u5904\u7406");
   template("({0} pending)", "\uFF08{0} \u9879\u5F85\u5904\u7406\uFF09");
   template("({0} servers)", "\uFF08{0} \u53F0\u670D\u52A1\u5668\uFF09");
@@ -2690,8 +2705,8 @@
   template("Job completed: {0}", "\u4EFB\u52A1\u5DF2\u5B8C\u6210\uFF1A{0}");
   template("Job failed: {0}", "\u4EFB\u52A1\u5931\u8D25\uFF1A{0}");
   template("Seller error: {0}", "\u51FA\u552E\u7A0B\u5E8F\u9519\u8BEF\uFF1A{0}");
-  template("Minigame locked (~{0}m remaining)", "\u5C0F\u6E38\u620F\u5DF2\u9501\u5B9A\uFF08\u7EA6\u5269\u4F59 {0} \u5206\u949F\uFF09");
-  template("Minigame lock (~{0}m remaining)", "\u5C0F\u6E38\u620F\u9501\u5B9A\uFF08\u7EA6\u5269\u4F59 {0} \u5206\u949F\uFF09");
+  template("Minigame locked (~{0}m remaining)", "\u5C0F\u6E38\u620F\u5DF2\u9501\u5B9A\uFF08\u7EA6\u5269\u4F59 {0}m\uFF09", true);
+  template("Minigame lock (~{0}m remaining)", "\u5C0F\u6E38\u620F\u9501\u5B9A\uFF08\u7EA6\u5269\u4F59 {0}m\uFF09", true);
   template("{0} (expired)", "{0}\uFF08\u5DF2\u8FC7\u671F\uFF09");
   template("Game unavailable: {0}; refresh the game after updating the extension.", "\u65E0\u6CD5\u8FDE\u63A5\u6E38\u620F\uFF1A{0}\uFF1B\u66F4\u65B0\u6269\u5C55\u540E\u8BF7\u5237\u65B0\u6E38\u620F\u3002");
   template("Server confirmed expedition {0}", "\u670D\u52A1\u5668\u5DF2\u786E\u8BA4\u8FDC\u5F81 {0}");
@@ -2722,8 +2737,7 @@
     const source = white[2];
     let text = exact(source, language);
     if (text !== null) return white[1] + text + white[3];
-    const hours = (language === "zh-CN" ? /^(\d+)h$/i : /^(\d+)\s*小时$/).exec(source);
-    if (hours) return white[1] + hours[1] + (language === "en" ? "h" : " \u5C0F\u65F6") + white[3];
+    if (/^(?:\d+\s*[dhms](?::|\s|$)\s*)+$/i.test(source) || /^\d{1,2}:\d{2}(?::\d{2})?$/.test(source)) return value;
     for (const item of templates) {
       const rule = language === "en" ? item.zhMatch : item.enMatch;
       const match = rule.regex.exec(source);

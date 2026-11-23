@@ -22,8 +22,8 @@ test('dynamic statuses preserve counts, software names, IDs and file extensions'
  assert.equal(t('正在派遣 Zero，费用 1995 CR；等待服务器确认','en'),'Sending Zero, cost 1995 CR; awaiting server confirmation');
  const result=t('Cleanup verified: 7 failed job(s) dismissed; 2 remaining or unverified.','zh-CN');
  assert.ok(result.includes('7')&&result.includes('2'));assert.ok(result.includes('清理'));
- assert.equal(t('Minigame locked (~13m remaining)','zh-CN'),'小游戏已锁定（约剩余 13 分钟）');
- assert.equal(t('下次派遣检查：13:30:00 · 0 小时 30 分钟','en'),'Next dispatch check: 13:30:00 · 0h 30m');
+ assert.equal(t('Minigame locked (~13m remaining)','zh-CN'),'小游戏已锁定（约剩余 13m）');
+ assert.equal(t('下次派遣检查：13:30:00 · 0h:30m:0s','en'),'Next dispatch check: 13:30:00 · 0h:30m:0s');
 });
 test('Chinese workflow failure states translate without changing operational source data',()=>{
  for(const source of ['佣兵刷新超时，未使用旧缓存','邮箱仍有待领取附件，已停止派遣','最新费用超过上限，未派遣','远征模块已暂停，本轮操作已取消']){
@@ -34,5 +34,16 @@ test('proper names and raw protocol fragments are never subject to broad substit
  for(const source of ['Zero','5CRYPt0L 09','5CRYPt0L 0J','.eb54x','High-load auxiliary cable','019e4065-6ae8-760d-8724-58ab4f2cf7d7','42["desktop",{"action":"get.options","status":"FAILED"}]']){
   assert.equal(t(source,'zh-CN'),source);assert.equal(t(source,'en'),source);
  }
- assert.equal(t('Search','zh-CN'),'搜索');assert.equal(t('5h','zh-CN'),'5 小时');
+ assert.equal(t('Search','zh-CN'),'搜索');assert.equal(t('5h','zh-CN'),'5h');
+});
+
+test('duration formatting cannot match the m or s inside real panel and market labels',()=>{
+ const expected=[['📌 Pinned Timers','📌 固定倒计时'],['🏪 Markets','🏪 市场'],['CORE Market Jobs','CORE 市场任务'],['BMI-ZEN Market Jobs','BMI-ZEN 市场任务'],['SOYUZ RM7 Market Jobs','SOYUZ RM7 市场任务'],['USOL RM7 Market Jobs','USOL RM7 市场任务']];
+ for(const [en,zh]of expected)assert.equal(t(en,'zh-CN'),zh);
+ const label=t('֎ Automation/QoL Toggles','zh-CN');assert.ok(!label.includes('分钟')&&!label.includes('秒'));
+ for(const value of ['3h:46m:20s','03:46:20','3h 46m 20s','46m 20s','5h','59s','2d 3h 0m 9s']){
+  assert.equal(t(value,'zh-CN'),value);assert.equal(t(value,'en'),value);
+  assert.ok(t('⏳ Jobs Reset: '+value,'zh-CN').endsWith(value));
+ }
+ for(const value of ['Pinned Timers','Markets','Automation/QoL Toggles','SOYUZ RM7 Market Jobs'])assert.ok(!/[分秒]/.test(t(value,'zh-CN')));
 });

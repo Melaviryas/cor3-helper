@@ -262,8 +262,8 @@
         <div class="loadout-hw-info-popup" id="marketInfoPopup" data-section-group-content="markets"></div>
     </div>
 
-    <!-- Unified Chinese Expedition module: one card in every layout -->
-    <div class="section exp-module" id="expeditionsSection" lang="zh-CN">
+    <!-- Unified Expedition module: one card in every layout -->
+    <div class="section exp-module" id="expeditionsSection">
         <div class="exp-module-header">
             <button type="button" class="section-title group-collapse-toggle" id="expeditionsGroupToggle" aria-expanded="true" title="收起远征"><span class="group-collapse-arrow" aria-hidden="true">▼</span><span>🛶 远征</span></button>
             <label class="exp-master-label" for="expeditionModuleToggle">总开关</label>
@@ -278,7 +278,9 @@
                 <div class="exp-panel-body">
                     <div id="expeditionLastUpdated" class="exp-hint"></div>
                     <div id="expeditionInfoContainer" class="exp-dynamic"><div class="no-decisions">尚无缓存，请启用远征模块。</div></div>
-                    <details class="exp-panel exp-nested" id="decisionsSection">
+                </div>
+            </details>
+                    <details class="exp-panel" id="decisionsSection">
                         <summary id="decisionsSectionToggle">📋 决策<span id="decisionsCount" class="exp-mode-badge"></span></summary>
                         <div class="exp-panel-body" id="decisionsSectionBody">
                             <div class="exp-setting"><div class="exp-setting-row"><label for="autoChooseCheckbox">自动选择决策</label><label class="alarm-toggle-switch"><input type="checkbox" id="autoChooseCheckbox"><span class="slider-track"></span></label></div></div><div class="exp-setting"><div class="exp-setting-row"><label for="noWaitAutoChooseCheckbox">立即自动选择，不等待截止</label><label class="alarm-toggle-switch"><input type="checkbox" id="noWaitAutoChooseCheckbox"><span class="slider-track"></span></label></div></div><div class="exp-setting"><div class="exp-setting-row"><label for="modifiersEnabledToggle">启用自定义评分权重</label><label class="alarm-toggle-switch"><input type="checkbox" id="modifiersEnabledToggle"><span class="slider-track"></span></label></div></div><div class="exp-setting"><div class="exp-setting-row"><label for="getRidOfVeteransToggle">启用老兵特殊策略</label><label class="alarm-toggle-switch"><input type="checkbox" id="getRidOfVeteransToggle"><span class="slider-track"></span></label></div></div>
@@ -287,17 +289,15 @@
                             <div id="decisionsContainer" class="exp-dynamic"></div>
                         </div>
                     </details>
-                    <div class="exp-setting"><div class="exp-setting-row"><label for="mercDebugToggle">🖥️ 调试日志</label><label class="alarm-toggle-switch"><input type="checkbox" id="mercDebugToggle"><span class="slider-track"></span></label></div></div>
+            <details class="exp-panel" id="expeditionDebugSection" open>
+                <summary id="expeditionDebugSectionToggle"><span>🖥️ Debug Console</span><label class="alarm-toggle-switch exp-debug-switch"><input type="checkbox" id="mercDebugToggle" aria-label="Debug Console"><span class="slider-track"></span></label></summary>
+                <div class="exp-panel-body">
                     <div class="debug-console" id="mercDebugConsole">
                         <div class="debug-console-tabs"><span class="debug-console-tab active">日志</span><button type="button" id="copyMercLogsBtn" class="refresh-btn-small" title="复制远征日志">📋 复制</button></div>
                         <div class="debug-console-body active" id="mercDebugLogsBody" aria-live="polite"></div>
                     </div>
                     <div class="exp-hint">保留最近 200 条 · 本地时间 · 收起界面后继续记录</div>
                 </div>
-            </details>
-            <details class="exp-panel" id="personalDroneSection">
-                <summary id="personalDroneSectionToggle">🛠️ 个人无人机组装</summary>
-                <div class="exp-panel-body" id="personalDroneSectionBody"><div class="exp-hint">原版尚未实现直接组装操作。这里显示仓库中的无人机材料；实际阶段交付仍在游戏内进行。</div><div id="personalDroneContainer"></div></div>
             </details>
             <details class="exp-panel" id="mercenariesSection" open>
                 <summary id="mercenariesSectionToggle">⚔️ 佣兵<button type="button" id="refreshMercenariesBtn" class="refresh-btn-small" title="刷新佣兵与费用" data-exp-action>🔄</button></summary>
@@ -323,10 +323,31 @@
                     <details class="exp-material-details"><summary>查看无人机材料保护清单（22 类）</summary><ul id="droneMaterialsKeepList"></ul></details>
                 </div>
             </details>
-            <details class="exp-panel" id="inventorySection">
-                <summary id="inventorySectionToggle">🎒 仓库<span id="spaceInfo" class="exp-mode-badge">-- / --</span><button type="button" id="refreshInventoryBtn" class="refresh-btn-small" title="刷新仓库" data-exp-action>🔄</button></summary>
-                <div class="exp-panel-body" id="inventorySectionBody"><div id="totalValue" class="exp-hint"></div><div id="specialistTimerInfo"></div><div id="inventoryContainer" class="exp-dynamic"></div></div>
-            </details>
+            <div class="exp-panel inventory-original" id="inventorySection" lang="en" data-i18n-skip>
+        <!-- Inventory (expandable) -->
+        <div class="market-sub-header" style="margin-top:8px;">
+            <div class="expandable-header" id="inventorySectionToggle" style="flex:1;">
+                <span class="expand-arrow-sub">▶</span>
+                <div style="display: flex; gap: 3px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none" data-sentry-element="StashIcon" data-sentry-source-file="expeditions-stash-panel.tsx">
+                        <path d="M16.6667 5H3.33333C2.8731 5 2.5 5.3731 2.5 5.83333V16.6667C2.5 17.1269 2.8731 17.5 3.33333 17.5H16.6667C17.1269 17.5 17.5 17.1269 17.5 16.6667V5.83333C17.5 5.3731 17.1269 5 16.6667 5Z" stroke="rgba(118, 193, 209, 1)" stroke-width="1.66667" stroke-linejoin="round"></path>
+                        <path d="M7.47917 10.0033H12.4792M2.5 5.41659L5.41667 2.08325H14.5833L17.5 5.41659" stroke="rgba(118, 193, 209, 1)" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <span class="market-sub-label"> Inventory <span id="spaceInfo" class="space-badge" style="font-size:9px;padding:2px 6px;">-- / --</span> <span id="totalValue" style="font-size:10px;color:var(--accent-green);font-weight:normal;"></span></span>
+                </div>
+            </div>
+            <button data-exp-action id="refreshInventoryBtn" class="refresh-btn-small" title="Refresh Inventory">🔄</button>
+        </div>
+        <div class="last-updated" id="inventoryLastUpdated"></div>
+        <div class="expandable-body" id="inventorySectionBody">
+            <div id="specialistTimerInfo" style="display:none;"></div>
+            <div id="inventoryActionStatus" class="exp-action-status" aria-live="polite"></div>
+            <div id="inventoryContainer"><div class="no-decisions">Loading inventory...</div></div>
+            <div class="loadout-hw-info-overlay" id="inventoryInfoOverlay"></div>
+            <div class="loadout-hw-info-popup" id="inventoryInfoPopup"></div>
+        </div>
+
+            </div>
             <details class="exp-panel" id="archivedExpSection">
                 <summary id="archivedExpSectionToggle">📦 历史远征<button type="button" id="refreshArchivedBtn" class="refresh-btn-small" title="刷新历史远征" data-exp-action>🔄</button></summary>
                 <div class="exp-panel-body" id="archivedExpSectionBody"><div id="archivedExpContainer" class="exp-dynamic"></div></div>
