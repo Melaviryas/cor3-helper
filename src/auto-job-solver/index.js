@@ -10,9 +10,18 @@ import { processQueue } from './main-loop.js';
         if (event.source !== window) return;
 
         if (event.data && event.data.type === 'COR3_AUTOJOB_START') {
+            if (state.running) { log('Auto Job Solver already running — ignoring duplicate start', 'warn'); return; }
+            state.abortFlag = false;
+            state.pendingLoadoutMode = null;
             state.jobQueue = event.data.jobs || [];
             state.solverSettings = event.data.settings || {};
             processQueue();
+        }
+
+        if (event.data?.type === 'COR3_AUTOJOB_LOADOUT_MODE') {
+            const value = event.data.mode === 'software' ? 'software' : 'auto';
+            if (state.running) state.pendingLoadoutMode = value;
+            else state.solverSettings.loadoutMode = value;
         }
 
         if (event.data && event.data.type === 'COR3_AUTOJOB_STOP') {

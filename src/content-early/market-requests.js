@@ -31,12 +31,16 @@ export function __cor3WaitForMsg(eventType, timeoutMs) {
 }
 
 // Ensure access to a server (login status check → hack if needed)
-export function __cor3EnsureServerAccess(serverId, serverName) {
+export function __cor3EnsureServerAccess(serverId, serverName, expeditionGuard) {
     return new Promise(function (resolve, reject) {
+        const allowed = () => !expeditionGuard || expeditionGuard();
+        const send = message => wsSend(message, expeditionGuard);
+        if (!allowed()) { reject(new Error('远征连接检查已取消')); return; }
         console.log('[COR3 Helper] Path-through: checking access to ' + serverName);
         var getLoginStatus = '42["event",{"event":{"name":"sai","action":"get.login.status"},"data":{"serverId":"' + serverId + '"}}]';
-        wsSend(getLoginStatus);
+        send(getLoginStatus);
         __cor3WaitForMsg('COR3_AUTOJOB_SAI_LOGIN_STATUS', 10000).then(function (loginData) {
+            if (!allowed()) { reject(new Error('远征连接检查已取消')); return; }
             if (loginData.data && loginData.data.activeAccesses && loginData.data.activeAccesses.length > 0) {
                 console.log('[COR3 Helper] Path-through: ' + serverName + ' already has access');
                 resolve();
@@ -47,8 +51,9 @@ export function __cor3EnsureServerAccess(serverId, serverName) {
             // Enable decrypt solver for the hack minigame
             window.postMessage({ type: 'COR3_AUTOJOB_ENABLE_DECRYPT_SOLVER' }, '*');
             var hackStart = '42["event",{"event":{"name":"sai","action":"hack.start"},"data":{"serverId":"' + serverId + '"}}]';
-            wsSend(hackStart);
+            send(hackStart);
             __cor3WaitForMsg('COR3_AUTOJOB_SAI_HACK_START', 30000).then(function (hackData) {
+                if (!allowed()) { reject(new Error('远征连接检查已取消')); return; }
                 if (hackData.error) {
                     reject(new Error(serverName + ' hack failed: ' + (hackData.error.message || JSON.stringify(hackData.error))));
                     return;
@@ -59,8 +64,9 @@ export function __cor3EnsureServerAccess(serverId, serverName) {
                     // Whether SAI update arrived or timed out, check login status
                     var retries = 3;
                     function checkAccess(attempt) {
+                        if (!allowed()) { reject(new Error('远征连接检查已取消')); return; }
                         console.log('[COR3 Helper] Path-through: ' + serverName + ' checking access (attempt ' + attempt + '/' + retries + ')');
-                        wsSend(getLoginStatus);
+                        send(getLoginStatus);
                         __cor3WaitForMsg('COR3_AUTOJOB_SAI_LOGIN_STATUS', 5000).then(function (data) {
                             if (data.data && data.data.activeAccesses && data.data.activeAccesses.length > 0) {
                                 console.log('[COR3 Helper] Path-through: ' + serverName + ' access confirmed');
@@ -98,10 +104,10 @@ var MARKET_CONFIG = {
 
 // Fetch network-map data (servers + connections) from game WS.
 // Returns Promise<{ servers: Array, connections: Array }> or null on timeout.
-export function __cor3FetchMapData() {
+export function __cor3FetchMapData(expeditionGuard) {
     return new Promise(function (resolve) {
         var getMap = '42["event",{"event":{"name":"network-map","action":"get.map"},"data":{}}]';
-        wsSend(getMap);
+        wsSend(getMap, expeditionGuard);
         var done = false;
         function onMap(evt) {
             if (done) return;

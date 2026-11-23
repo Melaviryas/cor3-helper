@@ -38,15 +38,6 @@ export function _automationProcessNext() {
     if (_automationActive) return;
     if (_automationQueue.length === 0) {
         _broadcastQueueStatus();
-        setTimeout(() => {
-            if (_automationActive || _automationQueue.length > 0) return;
-            chrome.storage.local.get('expeditionsData', (result) => {
-                if (result.expeditionsData) {
-                    // Lazy import to avoid circular dependency
-                    import('./auto-send.js').then(m => m.checkAutoSendOnExpeditionData(result.expeditionsData));
-                }
-            });
-        }, 3000);
         return;
     }
     var next = _automationQueue.shift();

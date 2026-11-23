@@ -1,0 +1,85 @@
+{
+  "manifest_version": 3,
+  "name": "COR3 Helper — Modified 11/23/2026",
+  "version": "1.7.0",
+  "description": "Monitor markets, expeditions, daily ops, and get timer alerts for cor3.gg.",
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab",
+    "tabs",
+    "sidePanel",
+    "alarms"
+  ],
+  "side_panel": {
+    "default_path": "popup.html"
+  },
+  "host_permissions": [
+    "https://cor3.gg/*",
+    "https://os.cor3.gg/*",
+    "https://svc-corie.cor3.gg/*",
+    "https://raw.githubusercontent.com/*"
+  ],
+  "devtools_page": "devtools.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://cor3.gg/*",
+        "https://os.cor3.gg/*"
+      ],
+      "js": [
+        "console-logger.js",
+        "notepack.min.js",
+        "msgpack-codec.js",
+        "content-early.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://cor3.gg/*",
+        "https://os.cor3.gg/*"
+      ],
+      "js": [
+        "console-logger.js",
+        "errors.js",
+        "ws-messages.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icon/favicon16.png",
+    "48": "icon/favicon48.png",
+    "128": "icon/favicon128.png"
+  },
+  "action": {
+    "default_icon": "icon/favicon128.png",
+    "default_popup": "popup.html",
+    "default_title": "COR3 Helper"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "msgpack-codec.js",
+        "ws-interceptor.js",
+        "decrypt-solver.js",
+        "daily-hack-solver.js",
+        "auto-job-solver.js",
+        "auto-valuable-seller.js",
+        "ice-wall-solver.js",
+        "simple-decrypt-solver.js",
+        "devtools-log-viewer.html",
+        "devtools-log-viewer.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

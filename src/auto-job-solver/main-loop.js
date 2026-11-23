@@ -170,6 +170,10 @@ export async function processQueue() {
 
         state.currentJobIndex = i;
         var job = state.jobQueue[i];
+        if (state.pendingLoadoutMode != null) {
+            state.solverSettings.loadoutMode = state.pendingLoadoutMode;
+            state.pendingLoadoutMode = null;
+        }
 
         if (job.status === 'done' || job.status === 'failed' || job.status === 'skipped' || job.status === 'bugged') {
             continue;
@@ -205,11 +209,6 @@ export async function processQueue() {
 
         try {
             await ensureLoadoutForJob(job);
-        } catch (loadoutErr) {
-            log('Loadout pre-check warning: ' + loadoutErr.message + ' — proceeding anyway', 'warn');
-        }
-
-        try {
             if (job.marketKey === 'dark') {
                 await stepSetEndpoint(DARK_MARKET_SERVER_ID);
             } else if (job.marketKey === 'soyuz') {

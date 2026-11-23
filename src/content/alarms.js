@@ -1,3 +1,4 @@
+import { ALARMS_ENABLED } from '../shared/features.js';
 // Alarm system — audio alarms and timer checks
 
 import { isContextValid } from './helpers.js';
@@ -19,13 +20,14 @@ export function clearAllIntervals() {
 
 // Load alarms
 chrome.storage.sync.get('alarms', (data) => {
-    alarms = data.alarms || [];
+    alarms = ALARMS_ENABLED ? data.alarms || [] : [];
 });
 
-export function setAlarms(v) { alarms = v; }
+export function setAlarms(v) { alarms = ALARMS_ENABLED ? v : []; }
 export function resetAlarmTriggered() { alarmTriggered = {}; }
 
 export function playAlarm(volumePercent) {
+    if (!ALARMS_ENABLED) return;
     if (!audioContext) {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
     }
@@ -46,6 +48,7 @@ export function playAlarm(volumePercent) {
 }
 
 export function startContinuousAlarm(volume) {
+    if (!ALARMS_ENABLED) return;
     if (continuousInterval) clearInterval(continuousInterval);
     isAlarmActive = true;
     chrome.runtime.sendMessage({ action: "alarmActiveStatus", isActive: true }).catch(()=>{});
@@ -155,4 +158,4 @@ export async function checkAlarms() {
 }
 
 // Check alarms every second
-alarmsIntervalId = setInterval(() => checkAlarms(), 1000);
+if (ALARMS_ENABLED) alarmsIntervalId = setInterval(() => checkAlarms(), 1000);

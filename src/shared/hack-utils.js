@@ -59,8 +59,11 @@ export function createWaitForHackToBeDone(logFn, abortFlagFn) {
         var hackSolverTimeout = 60000;
         var hackType = await detectHackType(5000);
         if (hackType === 'ice-wall') {
-            hackSolverTimeout = 120000;
-            logFn('ICE Wall hack detected — waiting up to 2 minutes');
+            hackSolverTimeout = 150000;
+            logFn('ICE Wall hack detected — waiting up to 2 minutes 30 seconds');
+        } else if (hackType === 'decrypt') {
+            hackSolverTimeout = 90000;
+            logFn('decrypt hack detected — waiting up to 90s');
         } else if (hackType) {
             logFn(hackType + ' hack detected — waiting up to 60s');
         } else {

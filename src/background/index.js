@@ -2,9 +2,9 @@
 // Imports all submodules so esbuild bundles them into a single IIFE.
 
 import { getCor3Tab } from './helpers.js';
-import { checkAutoChooseBackground } from './auto-choose.js';
 import { scheduleAutoFinishAllBg, scheduleAutoFinishAllBgDebounced, runAutoFinishAllBg, collectJobsBg } from './auto-finish-jobs.js';
 import { MARKET_RESET_DURATIONS_MS } from '../shared/server-constants.js';
+import './periodic-merc-dispatch.js';
 
 // --- Keep-alive ---
 async function keepWorkerAlive() {
@@ -20,19 +20,6 @@ async function keepWorkerAlive() {
 }
 keepWorkerAlive();
 setInterval(keepWorkerAlive, 30000);
-
-// --- Decision timer monitoring every 10 seconds ---
-setInterval(checkAutoChooseBackground, 10000);
-
-// --- Expedition data request (on-demand only) ---
-async function requestExpeditionsFromBg() {
-    try {
-        const tab = await getCor3Tab();
-        if (tab) {
-            await chrome.tabs.sendMessage(tab.id, { action: "requestExpeditions" });
-        }
-    } catch (e) { /* silent */ }
-}
 
 // --- Listen for chrome.alarms ---
 chrome.alarms.onAlarm.addListener((alarm) => {

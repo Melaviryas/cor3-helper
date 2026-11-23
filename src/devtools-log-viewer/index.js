@@ -1,3 +1,4 @@
+import { installUiLanguage, uiText } from '../shared/ui-language.js';
 // devtools-log-viewer.js — Offline log viewer (popout window) (modularized entry point)
 // Supports importing JSON, MD table, and Discord clipboard formats exported by the extension.
 
@@ -470,7 +471,7 @@ importFileInput.addEventListener('change', async (e) => {
         const text = await file.text();
         const parsed = detectAndParse(text);
         if (!parsed) {
-            alert('Could not parse the imported file. Supported formats: JSON (Export or Copy-All-Logs), MD table, Discord clipboard format.');
+            alert(uiText('Could not parse the imported file. Supported formats: JSON (Export or Copy-All-Logs), MD table, Discord clipboard format.'));
             return;
         }
         importedData = parsed;
@@ -482,7 +483,7 @@ importFileInput.addEventListener('change', async (e) => {
         filterReceived.parentElement.style.display = logMode ? 'none' : '';
         loadImportedData();
     } catch (err) {
-        alert('Error reading file: ' + err.message);
+        alert(uiText('Error reading file: ' + err.message));
     }
     importFileInput.value = '';
 });
@@ -607,3 +608,5 @@ const _initOpt = document.createElement('option');
 _initOpt.value = '0';
 _initOpt.textContent = '0-0';
 pageSelector.replaceChildren(_initOpt);
+
+installUiLanguage();

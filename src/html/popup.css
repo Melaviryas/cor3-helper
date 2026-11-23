@@ -1,3 +1,50 @@
+.ui-language-row { display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid var(--border); border-radius:6px; padding:6px 10px; margin-bottom:6px; background:var(--bg-card); color:var(--text-secondary); font-size:11px; }
+.ui-language-row select { background:var(--bg-option); color:var(--text); border:1px solid var(--border); border-radius:4px; padding:3px 6px; font-size:11px; min-width:100px; }
+.ui-language-row select:focus-visible { outline:2px solid var(--accent-cyan); outline-offset:2px; }
+        /* The Expedition module stays together in popup, popout and sidepanel. */
+        .exp-module { min-width: 0; }
+        .exp-module-header { display:flex; align-items:center; gap:8px; }
+        .exp-module-header > .group-collapse-toggle { flex:1; min-width:0; margin:0; }
+        .exp-master-label { font-size:11px; color:var(--text-secondary); white-space:nowrap; }
+        .exp-summary { font-size:12px; line-height:1.6; color:var(--accent-cyan); margin:8px 0 2px; overflow-wrap:anywhere; }
+        .exp-hint { color:var(--text-secondary); font-size:10px; line-height:1.65; margin:4px 0; overflow-wrap:anywhere; }
+        .exp-action-status { font-size:10px; color:var(--accent-orange); overflow-wrap:anywhere; }
+        .exp-panel { margin-top:10px; border:1px solid var(--border); border-radius:7px; background:var(--bg-card); min-width:0; }
+        .exp-panel > summary { display:flex; align-items:center; gap:6px; list-style:none; padding:10px 9px; cursor:pointer; color:var(--accent-cyan); font-size:12px; font-weight:bold; user-select:none; min-width:0; }
+        .exp-panel > summary::-webkit-details-marker { display:none; }
+        .exp-panel > summary::before { content:'▶'; font-size:10px; flex-shrink:0; }
+        .exp-panel[open] > summary::before { content:'▼'; }
+        .exp-panel > summary button { margin-left:auto; flex-shrink:0; }
+        .exp-panel > summary:focus-visible, .exp-module button:focus-visible { outline:2px solid var(--accent-cyan); outline-offset:2px; }
+        .exp-panel-body { padding:0 9px 10px; min-width:0; }
+        .exp-mode-badge { margin-left:auto; color:var(--accent-orange); text-align:right; font-size:10px; font-weight:normal; overflow-wrap:anywhere; }
+        .exp-setting { padding:8px 0; }
+        .exp-setting-row { display:flex; align-items:center; justify-content:space-between; gap:12px; color:var(--text-secondary); font-size:11px; line-height:1.5; }
+        .exp-setting-row > label:first-child { flex:1; }
+        .exp-module .alarm-toggle-switch { flex-shrink:0; }
+        .exp-setting .exp-hint { font-size:10px; color:var(--text-muted); margin:5px 48px 0 0; }
+        .exp-sale-choice { border-bottom:1px solid var(--border); }
+        .exp-sale-choice:last-of-type { border-bottom:0; }
+        .exp-actions, .exp-weight-row { display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin:8px 0; }
+        .exp-weight-row label { display:flex; gap:5px; align-items:center; color:var(--text-secondary); font-size:10px; }
+        .exp-module input[type=number] { width:72px; max-width:100%; box-sizing:border-box; background:var(--bg-option); border:1px solid var(--border); color:var(--text); padding:5px; border-radius:4px; }
+        .exp-module .expedition-card, .exp-module .merc-card { margin:7px 0; }
+        .exp-module .detail-row { line-height:1.65; }
+        .exp-module .merc-card { cursor:pointer; }
+        .exp-module .merc-card.selected { border-color:var(--accent-cyan); }
+        .exp-module .debug-console { width:100%; box-sizing:border-box; margin-top:4px; }
+        .exp-module .debug-console-body { max-height:250px; overflow:auto; overflow-wrap:anywhere; }
+        .exp-module .debug-console-tabs { justify-content:space-between; }
+        .exp-material-details { font-size:10px; color:var(--text-secondary); margin-top:8px; }
+        .exp-material-details summary { cursor:pointer; }
+        .exp-material-details li { margin:4px 0; overflow-wrap:anywhere; }
+        .exp-material-table { width:100%; border-collapse:collapse; font-size:10px; color:var(--text-secondary); }
+        .exp-material-table td, .exp-material-table th { padding:5px 3px; text-align:left; border-bottom:1px solid var(--border); overflow-wrap:anywhere; }
+        .exp-material-table td:last-child, .exp-material-table th:last-child { text-align:right; white-space:nowrap; }
+        .exp-item-detail { font-size:10px; color:var(--text-secondary); line-height:1.6; overflow-wrap:anywhere; margin-top:5px; }
+        .exp-module .exp-dynamic:empty::before { content:'暂无数据，请启用远征模块后刷新。'; display:block; font-size:10px; color:var(--text-muted); padding:8px 0; }
+        html[lang="en"] .exp-module .exp-dynamic:empty::before { content:'No data yet. Enable the Expedition module and refresh.'; }
+
         /* 1. Define the width of the entire scrollbar vertical strip */
         ::-webkit-scrollbar {
             width: 6px;
@@ -376,6 +423,56 @@
             font-size: 14px;
             margin-bottom: 8px;
             color: var(--accent-light-cyan);
+        }
+        .section-title.group-collapse-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            width: auto;
+            max-width: 100%;
+            margin: 0 0 8px;
+            padding: 0;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+            text-align: left;
+            cursor: pointer;
+        }
+        .section-header-row .group-collapse-toggle {
+            flex: 1;
+            margin: 0;
+        }
+        .group-collapse-toggle:hover {
+            color: var(--accent-cyan);
+        }
+        .group-collapse-toggle:focus-visible {
+            outline: 1px solid var(--accent-cyan);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+        .group-collapse-arrow {
+            font-size: 11px;
+            width: 12px;
+        }
+        .section-group-hidden {
+            display: none !important;
+        }
+        .daily-ops-section .section-header-row {
+            margin-bottom: 8px;
+        }
+        #modifiedVersionNote {
+            margin-top: 14px;
+            font-size: 14px;
+            line-height: 1.4;
+            text-align: center;
+            color: var(--text-secondary);
+            overflow-wrap: anywhere;
+        }
+        .popout-card:has(> #devTcsSection[style*="display:none"]),
+        .popout-card:has(> #devTcsSection[style*="display: none"]) {
+            display: none;
         }
         .alarm-section-title {
             font-size: 14px;
@@ -2746,3 +2843,5 @@
             color: var(--accent-orange);
             cursor: default;
         }
+
+html[lang="zh-CN"] .option-row.confirming .option-label::after { content: " — 点击确认"; }

@@ -1,0 +1,228 @@
+{
+  "sourceUrl": "https://github.com/3ncy/cor3/blob/main/Expeditions/Items.md",
+  "sourceSha": "535b06ae76c3a984cf9424074007e9a14e6f72dd",
+  "items": [
+    {
+      "id": "01a08093-78f5-7804-83d2-0d18887ae667",
+      "name": "Airgap Unit",
+      "canSell": false,
+      "droneMaterial": false
+    },
+    {
+      "id": "019d719f-84f4-7c43-94f6-4d3fca8ddd6f",
+      "name": "Artificial milk",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-71e8-a58e-983a7207e73e",
+      "name": "Californium-252 slab",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019f5a01-0006-7a06-9006-101112131406",
+      "name": "CCS \"EVO5\" miners gasmask",
+      "canSell": true,
+      "droneMaterial": false
+    },
+    {
+      "id": "019d719f-84f4-7112-91fe-e9e2207cd94d",
+      "name": "CCS \"Kaloshi\" Utility boots",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019f5a01-0007-7a07-9007-101112131407",
+      "name": "CCS Class 2 gas filter canister",
+      "canSell": true,
+      "droneMaterial": false
+    },
+    {
+      "id": "019f5a01-0008-7a08-9008-101112131408",
+      "name": "CCS colonists cap",
+      "canSell": true,
+      "droneMaterial": false
+    },
+    {
+      "id": "019d719f-84f4-76e1-82fa-16d79b171b4f",
+      "name": "CCS Hydrogel Burn kit",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-7e32-b0fa-1898e62bb0b6",
+      "name": "CCS Painkiller inhaler",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-7351-8040-86e712e97825",
+      "name": "CCS small oxygen inhaler tank",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-7070-a07b-17da3a88c631",
+      "name": "Circuit components",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-7985-952a-5e39941f4536",
+      "name": "Core tech NIC \"Nano\" package",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-7ff8-98f2-63eb5a113335",
+      "name": "Depleted Uranium Composites (DURC) container",
+      "canSell": true,
+      "droneMaterial": false
+    },
+    {
+      "id": "019d719f-84f4-7ccf-91b4-62ad4dbae7b9",
+      "name": "Fabricator magnet",
+      "canSell": true,
+      "droneMaterial": false
+    },
+    {
+      "id": "019d719f-84f4-7ae5-a18e-4d6e25e3ab0a",
+      "name": "FARLINE Universal Crimper",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-7a36-bb8a-7b6171502511",
+      "name": "High-load auxillary cable",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-7114-bd53-7867ad546099",
+      "name": "Holoscene Holographic cable",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-7d00-9248-9c9bc5f432da",
+      "name": "Holoscene Holographic processor",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019f5a01-000a-7a0a-900a-10111213140a",
+      "name": "Kalash Corp AK26 415mm barrel",
+      "canSell": true,
+      "droneMaterial": false
+    },
+    {
+      "id": "019f5a01-000b-7a0b-900b-10111213140b",
+      "name": "Kalash Corp AK26 factory bolt",
+      "canSell": true,
+      "droneMaterial": false
+    },
+    {
+      "id": "019d719f-84f4-7803-8770-274a795e38e4",
+      "name": "Kosmonavt Energy Bar",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019f1a2b-3c4d-7e5f-80c5-789abcdef012",
+      "name": "KTE-4417 Sealed Container",
+      "canSell": false,
+      "droneMaterial": false
+    },
+    {
+      "id": "019d719f-84f4-7645-aa0b-bd107fc57968",
+      "name": "METALIFE medical components",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-7601-a30b-50cc1cf91152",
+      "name": "Nergalium-79-B slab",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-7adb-82ba-8ea327b77723",
+      "name": "NPO \"Platforma\" universal straps with backpack connector slot",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-7b3b-99d3-795a7d1a31c2",
+      "name": "Old Abibas beanie",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019f5a01-0005-7a05-9005-101112131405",
+      "name": "Pack of old cigarettes \"Space monkey\"",
+      "canSell": true,
+      "droneMaterial": false
+    },
+    {
+      "id": "019d719f-84f4-7580-9dbc-f130c318394e",
+      "name": "Scalpel (CCS Field Surgeon Kit Mk2)",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-7d88-a0ea-ab3d4bbe9451",
+      "name": "Scissors (CCS Field Surgeon Kit Mk2)",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "01a08093-78f5-7ccc-a927-a9c10dc8d066",
+      "name": "Sealed package",
+      "canSell": false,
+      "droneMaterial": false
+    },
+    {
+      "id": "019d719f-84f4-7393-a42e-3cb1607f993d",
+      "name": "Soylent green bar",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-765f-94f9-afd6fac3f7c4",
+      "name": "SPI \"Smartwrench\" Powered adjustable wrench",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d76f3-ceda-7c24-913b-146937d427af",
+      "name": "TX-71 board",
+      "canSell": false,
+      "droneMaterial": false
+    },
+    {
+      "id": "019f5a01-0009-7a09-9009-101112131409",
+      "name": "USOL Issued combat boots gen.6",
+      "canSell": true,
+      "droneMaterial": false
+    },
+    {
+      "id": "019d719f-84f4-7555-94c9-41e7c3267667",
+      "name": "Water vial",
+      "canSell": true,
+      "droneMaterial": true
+    },
+    {
+      "id": "019d719f-84f4-7a8b-9a82-8174aa4dc228",
+      "name": "XHI powerbank tester",
+      "canSell": true,
+      "droneMaterial": false
+    },
+    {
+      "id": "019d719f-84f4-7e07-b8a0-4d01fe9b95af",
+      "name": "Zulu \"TeamH\" reinforced backpack",
+      "canSell": true,
+      "droneMaterial": false
+    }
+  ]
+}

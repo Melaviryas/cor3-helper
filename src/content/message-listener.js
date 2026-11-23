@@ -295,18 +295,21 @@ export function setupMessageListener() {
                 setAutoJobsActive(true);
                 injectAutoJobSolver();
                 setTimeout(() => {
-                    chrome.storage.local.get('autoJobsLockedJobs', (lockData) => {
-                        var lockedJobs = lockData.autoJobsLockedJobs;
-                        if (lockedJobs && lockedJobs.length > 0) {
-                            var now = Date.now();
-                            var stillLocked = lockedJobs.filter(j => j.lockExpiresAt && new Date(j.lockExpiresAt).getTime() > now);
-                            var expired = lockedJobs.length - stillLocked.length;
-                            settings.lockedJobs = stillLocked;
-                            chrome.storage.local.set({ autoJobsLockedJobs: stillLocked });
-                            if (expired > 0) console.log('[COR3 Helper] Pruned ' + expired + ' expired lock(s) from autoJobsLockedJobs');
-                            if (stillLocked.length > 0) console.log('[COR3 Helper] Passing ' + stillLocked.length + ' locked job(s) to solver');
-                        }
-                        window.postMessage({ type: 'COR3_AUTOJOB_START', jobs: jobs, settings: settings }, '*');
+                    chrome.storage.sync.get('autoJobLoadoutMode', modeData => {
+                        settings.loadoutMode = modeData.autoJobLoadoutMode === 'software' ? 'software' : 'auto';
+                        chrome.storage.local.get('autoJobsLockedJobs', (lockData) => {
+                            var lockedJobs = lockData.autoJobsLockedJobs;
+                            if (lockedJobs && lockedJobs.length > 0) {
+                                var now = Date.now();
+                                var stillLocked = lockedJobs.filter(j => j.lockExpiresAt && new Date(j.lockExpiresAt).getTime() > now);
+                                var expired = lockedJobs.length - stillLocked.length;
+                                settings.lockedJobs = stillLocked;
+                                chrome.storage.local.set({ autoJobsLockedJobs: stillLocked });
+                                if (expired > 0) console.log('[COR3 Helper] Pruned ' + expired + ' expired lock(s) from autoJobsLockedJobs');
+                                if (stillLocked.length > 0) console.log('[COR3 Helper] Passing ' + stillLocked.length + ' locked job(s) to solver');
+                            }
+                            window.postMessage({ type: 'COR3_AUTOJOB_START', jobs: jobs, settings: settings }, '*');
+                        });
                     });
                 }, 500);
             });

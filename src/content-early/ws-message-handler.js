@@ -1,3 +1,5 @@
+import { mercLog } from '../shared/merc-log.js';
+import { relayExpeditionModule } from './expedition-module.js';
 // WebSocket message handler: processes all inbound WS events
 import {
     trackedSockets,
@@ -31,6 +33,19 @@ export function handleWsMessage(rawData, socket) {
 
     const eventName = parsed[0];
     const payload = parsed[1];
+    relayExpeditionModule(eventName, payload);
+    if (eventName === 'market' && payload?.event?.action === 'job.dismiss') {
+        window.postMessage({ type: 'COR3_JOB_DISMISS_RESULT', data: payload.data, error: payload.error || null }, '*');
+    }
+
+    if (eventName === 'expeditions' && payload?.event) {
+        const action = payload.event.action;
+        if (payload.error) {
+            mercLog('远征操作 ' + action + ' 失败：', payload.error.message || payload.error.key || '未知服务器错误');
+        } else if (['launch', 'open.container', 'collect.all', 'insert.archive', 'respond.event'].includes(action)) {
+            mercLog('远征操作 ' + action + ' 已完成' + (payload.data?.id ? '：' + payload.data.id : ''));
+        }
+    }
 
     // Handle token-expired error — close sockets to force game to reconnect with fresh token
     if (eventName === 'error' && payload && payload.message === 'token-expired') {
@@ -353,6 +368,10 @@ export function handleWsMessage(rawData, socket) {
         if (mktAction === 'get.jobs') {
             var jobsMarketId = window.__cor3CurrentMarketFetch;
             var jobsType = resolveMarketType(jobsMarketId);
+            if (Array.isArray(payload.data.recentJobs)) {
+                window.postMessage({ type: 'COR3_MARKET_JOBS_SNAPSHOT', marketKey: jobsType,
+                    marketId: jobsMarketId, data: payload.data }, '*');
+            }
             var jobsCacheKey = marketCacheKey(jobsType);
             if (window[jobsCacheKey]) {
                 window[jobsCacheKey].jobs = payload.data.jobs || [];

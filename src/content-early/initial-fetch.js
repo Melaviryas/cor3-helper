@@ -20,14 +20,7 @@ window.__cor3InitialFetch = function () {
     // Trigger daily ops fetch via content script
     window.postMessage({ type: 'COR3_FETCH_DAILY_OPS' }, '*');
 
-    // Follow Refresh All order:
-    // 1. Markets sequentially: HOME → D4RK → SOYUZ → USOL
-    // 2. Expedition data (server auto-provides via room join — no explicit request needed)
-    // 3. Stash (inventory)
-    // 4. CORE mercs → USOL mercs
-    // 5. Archived expeditions
-    // 6. Loadout
-    // 7. Updater
+    // Refresh the four markets, then Loadout and Updater.
     window.__cor3RequestMarket(function () {
         console.log('[COR3 Helper] Initial: HOME done, starting D4RK');
         window.__cor3RequestDarkMarket(function () {
@@ -36,48 +29,15 @@ window.__cor3InitialFetch = function () {
                 console.log('[COR3 Helper] Initial: SOYUZ done, starting USOL');
                 window.__cor3RequestUsolMarket(function () {
                     console.log('[COR3 Helper] Initial: All markets fetched');
-                    // Expedition data already received from server room join — no request needed
-                    // Notify content script that expedition data can be rendered
-                    window.postMessage({ type: 'COR3_WS_EXPEDITIONS_READY' }, '*');
-                    // Fetch stash (inventory)
+                    // Retired expedition/stash/mercenary requests are not part of startup.
+                    window.__cor3InitialMercsFetchDone = true;
+                    window.__cor3RequestLoadout();
                     setTimeout(function () {
-                        window.__cor3RequestStash();
-                    }, humanDelay());
-                    // Fetch specialists data (stash expansion timers) after stash
-                    setTimeout(function () {
-                        window.__cor3RequestSpecialists();
-                    }, humanDelay() + 500);
-                    // CORE mercs after stash
-                    setTimeout(function () {
-                        console.log('[COR3 Helper] Initial: Starting CORE mercs');
-                        window.__cor3RequestMercenaries(null, function () {
-                            window.postMessage({ type: 'COR3_CORE_MERCS_DONE' }, '*');
-                            console.log('[COR3 Helper] Initial: CORE mercs done, starting USOL mercs');
-                            // USOL mercs after CORE done
-                            setTimeout(function () {
-                                window.__cor3RequestUsolMercenaries(function () {
-                                    window.postMessage({ type: 'COR3_USOL_MERCS_DONE' }, '*');
-                                    window.__cor3InitialMercsFetchDone = true;
-                                    console.log('[COR3 Helper] Initial: All mercs done');
-                                    // Archived expeditions after mercs
-                                    setTimeout(function () {
-                                        window.__cor3RequestArchivedExpeditions();
-                                    }, humanDelay());
-                                    // Loadout after archived
-                                    setTimeout(function () {
-                                        window.__cor3RequestLoadout();
-                                    }, 2000);
-                                    // Updater
-                                    setTimeout(function () {
-                                        window.__cor3RequestUpdater();
-                                        window.__cor3InitialFetchInProgress = false;
-                                        console.log('[COR3 Helper] Initial data fetch complete');
-                                        window.postMessage({ type: 'COR3_INITIAL_FETCH_DONE' }, '*');
-                                    }, 3500);
-                                });
-                            }, humanDelay());
-                        });
-                    }, 2500);
+                        window.__cor3RequestUpdater();
+                        window.__cor3InitialFetchInProgress = false;
+                        console.log('[COR3 Helper] Initial data fetch complete');
+                        window.postMessage({ type: 'COR3_INITIAL_FETCH_DONE' }, '*');
+                    }, 1500);
                 });
             });
         });

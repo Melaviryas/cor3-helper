@@ -13,6 +13,7 @@ export var state = {
     abortFlag: false,
     tokenExpired: false,
     solverSettings: {},
+    pendingLoadoutMode: null,
     _currentJobRef: null,
     currentJobIndex: 0,
     downloadFolderId: null,

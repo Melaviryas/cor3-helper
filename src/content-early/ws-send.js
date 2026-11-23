@@ -42,7 +42,8 @@ function scheduleFlush(delayMs) {
     ceNextTick(tick);
 }
 
-export function wsSendRaw(msg) {
+export function wsSendRaw(msg, guard) {
+    if (guard && !guard()) return false;
     var toSend = msg;
     var codec = window.__cor3MsgpackCodec;
     if (codec && codec.isReady() && typeof msg === 'string') {
@@ -78,6 +79,8 @@ export function wsSendRaw(msg) {
 
     console.log('[COR3 Helper] No active WebSocket found — re-queuing message for retry');
     // Re-queue message and retry after a short delay
+    // A guarded expedition action is never replayed after a disconnect.
+    if (guard) return false;
     if (wsSendQueue.length < WS_QUEUE_MAX) {
         wsSendQueue.unshift(msg);
         scheduleFlush(2000);
@@ -94,7 +97,8 @@ function wsSendFlush() {
     var elapsed = now - wsSendLastTime;
     if (elapsed >= WS_THROTTLE_MS) {
         var next = wsSendQueue.shift();
-        wsSendRaw(next);
+        if (next && typeof next === 'object' && next.expeditionGuard) wsSendRaw(next.message, next.expeditionGuard);
+        else wsSendRaw(next);
         if (wsSendQueue.length > 0) {
             scheduleFlush(WS_THROTTLE_MS);
         }
@@ -103,15 +107,16 @@ function wsSendFlush() {
     }
 }
 
-export function wsSend(msg) {
+export function wsSend(msg, guard) {
+    if (guard && !guard()) return false;
     var now = Date.now();
     var elapsed = now - wsSendLastTime;
     if (elapsed >= WS_THROTTLE_MS && wsSendQueue.length === 0) {
         // Can send immediately
-        wsSendRaw(msg);
+        wsSendRaw(msg, guard);
     } else {
         // Queue and schedule flush
-        wsSendQueue.push(msg);
+        wsSendQueue.push(guard ? { message: msg, expeditionGuard: guard } : msg);
         // Overflow protection: drop oldest messages if queue grows too large
         if (wsSendQueue.length > WS_QUEUE_MAX) {
             var dropped = wsSendQueue.length - WS_QUEUE_MAX;
@@ -165,7 +170,7 @@ export function leaveRoom(room) {
 
 // Send a join-room message and mark as joined.
 // New format includes jwtToken and clientVersion.
-function sendJoin(room) {
+export function joinRoom(room) {
     var joinData = { room: room };
     // Include jwtToken (strip "Bearer " prefix from captured token)
     var capturedBearerToken = getCapturedBearerToken();
@@ -200,7 +205,7 @@ function joinRoomsInOrder(rooms) {
     var chain = Promise.resolve();
     rooms.forEach(function (room) {
         chain = chain.then(function () {
-            sendJoin(room);
+            joinRoom(room);
             return delay(humanDelay());
         });
     });

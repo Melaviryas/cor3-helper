@@ -1,3 +1,4 @@
+import { excludeJobResult, retryAt } from '../shared/job-retry.js';
 import { getCor3Tab, bgAutoJobLog } from './helpers.js';
 import { MARKET_IDS, LOG_JOB_TYPES } from '../shared/server-constants.js';
 import { FALLBACK_PATH_MAP, FALLBACK_SERVER_PRIORITY } from '../shared/server-map.js';
@@ -37,7 +38,7 @@ export function collectJobsBg(marketData, darkMarketData, completedResults, serv
     const skipIds = new Set();
     if (completedResults && completedResults.length > 0) {
         for (const cr of completedResults) {
-            if (cr.status === 'failed' || cr.status === 'bugged' || cr.status === 'skipped') {
+            if (excludeJobResult(cr, now)) {
                 skipIds.add(cr.jobId);
             }
         }
@@ -211,6 +212,9 @@ export async function scheduleAutoFinishAllBg() {
                 if (diff > 0 && diff < minWaitMs) {
                     minWaitMs = diff;
                     scheduledReason = `minigame lock expires (${sr.name || sr.serverName || 'unknown'})`;
+                } else if (diff <= 0 && minWaitMs > 0) {
+                    minWaitMs = 0;
+                    scheduledReason = `minigame lock expired (${sr.name || sr.serverName || 'unknown'}) — rechecking`;
                 }
             }
         }
@@ -236,6 +240,12 @@ export async function runAutoFinishAllBg() {
         return;
     }
 
+    const { automationQueueStatus } = await chrome.storage.local.get('automationQueueStatus');
+    if (['clear-failed-jobs', 'dismiss-all-failed-jobs'].includes(automationQueueStatus?.active)) {
+        await chrome.alarms.create('autoFinishAllJobs', { delayInMinutes: 1 });
+        return;
+    }
+
     const tab = await getCor3Tab();
     if (!tab) {
         bgAutoJobLog('🔄 Auto Finish All: no cor3.gg tab found — retrying in 1m', 'warn');
@@ -258,7 +268,7 @@ export async function runAutoFinishAllBg() {
 
     const { autoJobsCompletedResults: crPre } = await chrome.storage.local.get('autoJobsCompletedResults');
     if (Array.isArray(crPre) && crPre.some(cr => cr.status === 'skipped')) {
-        const cleared = crPre.filter(cr => cr.status !== 'skipped');
+        const cleared = crPre.filter(cr => cr.status !== 'skipped' || (retryAt(cr) !== null && retryAt(cr) > Date.now()));
         await chrome.storage.local.set({ autoJobsCompletedResults: cleared });
     }
 

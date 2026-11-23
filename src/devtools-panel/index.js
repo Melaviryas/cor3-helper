@@ -1,3 +1,4 @@
+import { installUiLanguage, uiText } from '../shared/ui-language.js';
 // devtools-panel.js — CORE Helper DevTools panel logic (modularized entry point)
 
 import { PAGE_SIZE } from '../shared/devtools-constants.js';
@@ -436,7 +437,7 @@ async function sendWsMessage() {
         console.log('[COR3 Panel] Sent WS message to tab', tabId);
     } catch (e) {
         console.log('[COR3 Panel] Failed to send WS message:', e);
-        alert('Failed to send: ' + e.message);
+        alert(uiText('Failed to send: ' + e.message));
     }
 }
 
@@ -647,3 +648,5 @@ document.addEventListener('keydown', (e) => {
     await loadCurrentPage();
     console.log('[COR3 Panel] Init complete \u2014 totalCount:', totalCount, 'loaded:', allMessages.length);
 })();
+
+installUiLanguage();

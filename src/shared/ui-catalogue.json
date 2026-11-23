@@ -1,0 +1,2598 @@
+[
+  [
+    "Language",
+    "语言"
+  ],
+  [
+    "(hides automation)",
+    "（隐藏自动功能）"
+  ],
+  [
+    "Helper-Only Mode",
+    "仅辅助模式"
+  ],
+  [
+    "Pinned Timers",
+    "固定倒计时"
+  ],
+  [
+    "Automation/QoL Toggles",
+    "自动化 / 便利功能开关"
+  ],
+  [
+    "Hack Automation Toggles",
+    "入侵自动化开关"
+  ],
+  [
+    "Objective Automation Toggles",
+    "任务自动化开关"
+  ],
+  [
+    "QoL Toggles",
+    "便利功能开关"
+  ],
+  [
+    "Auto Decrypt Hacking",
+    "自动解密入侵"
+  ],
+  [
+    "Auto ICE Wall Hacking",
+    "自动破解 ICE Wall"
+  ],
+  [
+    "Auto Simple Decrypt Hacking",
+    "自动简易解密入侵"
+  ],
+  [
+    "Auto Daily Hacking",
+    "自动每日入侵"
+  ],
+  [
+    "Auto Job Solver",
+    "自动任务执行器"
+  ],
+  [
+    "Auto Job Solver UI",
+    "自动任务执行器界面"
+  ],
+  [
+    "Auto Valuable Seller",
+    "自动贵重文件出售"
+  ],
+  [
+    "Auto Valuable Seller UI",
+    "自动贵重文件出售界面"
+  ],
+  [
+    "Auto Job Loadout",
+    "自动任务配置"
+  ],
+  [
+    "Auto Update Markets",
+    "自动更新市场"
+  ],
+  [
+    "Auto Finish All Jobs",
+    "自动完成全部任务"
+  ],
+  [
+    "Auto Finish All Jobs disabled",
+    "已关闭自动完成全部任务"
+  ],
+  [
+    "Auto Finish All Jobs enabled",
+    "已开启自动完成全部任务"
+  ],
+  [
+    "Auto Send Mercenary",
+    "自动派遣佣兵"
+  ],
+  [
+    "Disable Desktop Glitch/Wave",
+    "关闭桌面故障 / 波纹效果"
+  ],
+  [
+    "Disable Network Fog",
+    "关闭网络迷雾"
+  ],
+  [
+    "Move Notifications To Left",
+    "将通知移到左侧"
+  ],
+  [
+    "Secret Link/Server Finder",
+    "隐藏连接 / 服务器查找器"
+  ],
+  [
+    "Debug Console",
+    "调试日志"
+  ],
+  [
+    "Start Auto Jobs",
+    "开始自动任务"
+  ],
+  [
+    "Stop Auto Jobs",
+    "停止自动任务"
+  ],
+  [
+    "Start Valuable Seller",
+    "开始贵重文件出售"
+  ],
+  [
+    "Stop Valuable Seller",
+    "停止贵重文件出售"
+  ],
+  [
+    "Start Valuable Search",
+    "开始搜索贵重文件"
+  ],
+  [
+    "Stop Valuable Search",
+    "停止搜索贵重文件"
+  ],
+  [
+    "Servers",
+    "服务器"
+  ],
+  [
+    "Downloads",
+    "下载"
+  ],
+  [
+    "Maintenance",
+    "维护"
+  ],
+  [
+    "Jobs",
+    "任务"
+  ],
+  [
+    "Job",
+    "任务名称"
+  ],
+  [
+    "Logs",
+    "日志"
+  ],
+  [
+    "Daily Ops",
+    "每日行动"
+  ],
+  [
+    "Markets",
+    "市场"
+  ],
+  [
+    "Loadout",
+    "配置"
+  ],
+  [
+    "Hardwares",
+    "硬件"
+  ],
+  [
+    "Softwares",
+    "软件"
+  ],
+  [
+    "System Overview",
+    "系统概览"
+  ],
+  [
+    "Hardware",
+    "硬件"
+  ],
+  [
+    "Software",
+    "软件"
+  ],
+  [
+    "Active",
+    "已启用"
+  ],
+  [
+    "Off",
+    "关闭"
+  ],
+  [
+    "On",
+    "开启"
+  ],
+  [
+    "All",
+    "全部"
+  ],
+  [
+    "Auto",
+    "自动"
+  ],
+  [
+    "Default",
+    "默认"
+  ],
+  [
+    "Original",
+    "原版"
+  ],
+  [
+    "Abyss",
+    "深渊"
+  ],
+  [
+    "Void",
+    "虚空"
+  ],
+  [
+    "Nebula",
+    "星云"
+  ],
+  [
+    "Tactical",
+    "战术"
+  ],
+  [
+    "Cyberpunk",
+    "赛博朋克"
+  ],
+  [
+    "Ocean",
+    "海洋"
+  ],
+  [
+    "Ember",
+    "余烬"
+  ],
+  [
+    "Arctic",
+    "极地"
+  ],
+  [
+    "Show More ▼",
+    "显示更多 ▼"
+  ],
+  [
+    "Show Less ▲",
+    "收起 ▲"
+  ],
+  [
+    "Open in separate window",
+    "在独立窗口中打开"
+  ],
+  [
+    "Open as side panel",
+    "作为侧边栏打开"
+  ],
+  [
+    "Change theme",
+    "切换主题"
+  ],
+  [
+    "Refresh all data",
+    "刷新全部数据"
+  ],
+  [
+    "Refresh job data",
+    "刷新任务数据"
+  ],
+  [
+    "Refresh Market",
+    "刷新市场"
+  ],
+  [
+    "Refresh Daily Ops",
+    "刷新每日行动"
+  ],
+  [
+    "Refresh Loadout",
+    "刷新配置"
+  ],
+  [
+    "Pin Market Timer",
+    "固定市场倒计时"
+  ],
+  [
+    "Pin Daily Ops",
+    "固定每日行动倒计时"
+  ],
+  [
+    "Collapse Markets",
+    "收起市场"
+  ],
+  [
+    "Collapse Loadout",
+    "收起配置"
+  ],
+  [
+    "Collapse Daily Ops",
+    "收起每日行动"
+  ],
+  [
+    "Collapse Automation/QoL Toggles",
+    "收起自动化 / 便利功能"
+  ],
+  [
+    "Expand Markets",
+    "展开市场"
+  ],
+  [
+    "Expand Loadout",
+    "展开配置"
+  ],
+  [
+    "Expand Daily Ops",
+    "展开每日行动"
+  ],
+  [
+    "Expand Automation/QoL Toggles",
+    "展开自动化 / 便利功能"
+  ],
+  [
+    "Collapse",
+    "收起"
+  ],
+  [
+    "Expand",
+    "展开"
+  ],
+  [
+    "Refresh",
+    "刷新"
+  ],
+  [
+    "Copy",
+    "复制"
+  ],
+  [
+    "Copied",
+    "已复制"
+  ],
+  [
+    "Copy failed",
+    "复制失败"
+  ],
+  [
+    "Copy all debug logs to clipboard",
+    "复制全部调试日志到剪贴板"
+  ],
+  [
+    "Copy to clipboard",
+    "复制到剪贴板"
+  ],
+  [
+    "Collecting logs...",
+    "正在收集日志…"
+  ],
+  [
+    "Failed to copy logs",
+    "复制日志失败"
+  ],
+  [
+    "Refresh all markets, then dismiss failed jobs",
+    "先刷新全部市场，再清理失败任务"
+  ],
+  [
+    "Clear Failed Jobs",
+    "清理失败任务"
+  ],
+  [
+    "Clear failed jobs - this button will disappear once cleanup is complete",
+    "清理失败任务；清理完成后此按钮将隐藏"
+  ],
+  [
+    "All Failed",
+    "清理全部失败任务"
+  ],
+  [
+    "Loading job data...",
+    "正在加载任务数据…"
+  ],
+  [
+    "All jobs completed or expired.",
+    "全部任务已完成或过期。"
+  ],
+  [
+    "No job data yet.",
+    "暂无任务数据。"
+  ],
+  [
+    "No jobs available.",
+    "暂无可用任务。"
+  ],
+  [
+    "No jobs available. Click 🔄 to refresh market data.",
+    "暂无可用任务。点击 🔄 刷新市场数据。"
+  ],
+  [
+    "No jobs selected or available to run.",
+    "没有选中或可执行的任务。"
+  ],
+  [
+    "Select All",
+    "全选"
+  ],
+  [
+    "Not supported",
+    "暂不支持"
+  ],
+  [
+    "This job type is currently not supported",
+    "此任务类型目前尚不支持"
+  ],
+  [
+    "Bugged",
+    "存在故障"
+  ],
+  [
+    "Log jobs on D4RK RM7CE are bugged (logs tab unavailable)",
+    "D4RK RM7CE 的日志任务存在故障（日志页不可用）"
+  ],
+  [
+    "Data Download",
+    "数据下载"
+  ],
+  [
+    "Data Upload",
+    "数据上传"
+  ],
+  [
+    "File Decryption",
+    "文件解密"
+  ],
+  [
+    "IP Injection",
+    "IP 注入"
+  ],
+  [
+    "Log Deletion",
+    "日志删除"
+  ],
+  [
+    "Log Download",
+    "日志下载"
+  ],
+  [
+    "Decrypt & Extract",
+    "解密并提取"
+  ],
+  [
+    "File Elimination",
+    "文件删除"
+  ],
+  [
+    "IP Cleanup",
+    "IP 清理"
+  ],
+  [
+    "Minigame lock",
+    "小游戏锁定"
+  ],
+  [
+    "Minigame locked",
+    "小游戏已锁定"
+  ],
+  [
+    "Jobs Reset",
+    "任务重置"
+  ],
+  [
+    "Next Task",
+    "下次行动"
+  ],
+  [
+    "Claimed",
+    "已领取"
+  ],
+  [
+    "Streak",
+    "连续天数"
+  ],
+  [
+    "Difficulty",
+    "难度"
+  ],
+  [
+    "Bonus",
+    "加成"
+  ],
+  [
+    "Easy",
+    "简单"
+  ],
+  [
+    "Medium",
+    "中等"
+  ],
+  [
+    "Hard",
+    "困难"
+  ],
+  [
+    "Very Hard",
+    "极难"
+  ],
+  [
+    "Yes",
+    "是"
+  ],
+  [
+    "No",
+    "否"
+  ],
+  [
+    "None",
+    "无"
+  ],
+  [
+    "Unknown",
+    "未知"
+  ],
+  [
+    "Available",
+    "可用"
+  ],
+  [
+    "RUNNING",
+    "运行中"
+  ],
+  [
+    "IN PROGRESS",
+    "进行中"
+  ],
+  [
+    "COMPLETED",
+    "已完成"
+  ],
+  [
+    "FAILED",
+    "失败"
+  ],
+  [
+    "EXPIRED",
+    "已过期"
+  ],
+  [
+    "SKIPPED",
+    "已跳过"
+  ],
+  [
+    "BUGGED",
+    "存在故障"
+  ],
+  [
+    "LOCKED",
+    "已锁定"
+  ],
+  [
+    "OPEN",
+    "可用"
+  ],
+  [
+    "TAKEN",
+    "已接取"
+  ],
+  [
+    "PENDING",
+    "待处理"
+  ],
+  [
+    "QUEUED",
+    "已排队"
+  ],
+  [
+    "FORCING...",
+    "正在触发…"
+  ],
+  [
+    "IN MAINTENANCE",
+    "维护中"
+  ],
+  [
+    "UPCOMING",
+    "即将维护"
+  ],
+  [
+    "READY",
+    "就绪"
+  ],
+  [
+    "Success",
+    "成功"
+  ],
+  [
+    "Expired",
+    "过期"
+  ],
+  [
+    "Paused",
+    "已暂停"
+  ],
+  [
+    "Status",
+    "状态"
+  ],
+  [
+    "Status: Ready",
+    "状态：就绪"
+  ],
+  [
+    "Search",
+    "搜索"
+  ],
+  [
+    "Decrypt",
+    "解密"
+  ],
+  [
+    "Hack",
+    "入侵"
+  ],
+  [
+    "View",
+    "查看"
+  ],
+  [
+    "Load",
+    "加载"
+  ],
+  [
+    "Count",
+    "数量"
+  ],
+  [
+    "Server",
+    "服务器"
+  ],
+  [
+    "Server Types",
+    "服务器类型"
+  ],
+  [
+    "File Types",
+    "文件类型"
+  ],
+  [
+    "Details",
+    "详情"
+  ],
+  [
+    "Name",
+    "名称"
+  ],
+  [
+    "Category",
+    "类别"
+  ],
+  [
+    "Reward/Penalty",
+    "奖励 / 惩罚"
+  ],
+  [
+    "Reward",
+    "奖励"
+  ],
+  [
+    "Penalty",
+    "惩罚"
+  ],
+  [
+    "Price",
+    "价格"
+  ],
+  [
+    "Base Price",
+    "基础价格"
+  ],
+  [
+    "Price Modifier",
+    "价格修正"
+  ],
+  [
+    "Manufacturer",
+    "制造商"
+  ],
+  [
+    "Tier",
+    "品质"
+  ],
+  [
+    "Vulnerability",
+    "漏洞值"
+  ],
+  [
+    "Vulnerability %",
+    "漏洞率 %"
+  ],
+  [
+    "Type",
+    "类型"
+  ],
+  [
+    "Remote",
+    "远程"
+  ],
+  [
+    "Access",
+    "访问权限"
+  ],
+  [
+    "Access Level",
+    "访问等级"
+  ],
+  [
+    "Access Type",
+    "访问类型"
+  ],
+  [
+    "Duration",
+    "持续时间"
+  ],
+  [
+    "Locked By Quest",
+    "受任务锁定"
+  ],
+  [
+    "Reputation",
+    "声望"
+  ],
+  [
+    "Reputation — Level",
+    "声望 — 等级"
+  ],
+  [
+    "Progress",
+    "进度"
+  ],
+  [
+    "Level Locked",
+    "等级已锁定"
+  ],
+  [
+    "Max Level",
+    "最高等级"
+  ],
+  [
+    "Credits",
+    "余额"
+  ],
+  [
+    "Bought",
+    "已购买"
+  ],
+  [
+    "BOUGHT",
+    "已购买"
+  ],
+  [
+    "INFO",
+    "信息"
+  ],
+  [
+    "CHANGE",
+    "更换"
+  ],
+  [
+    "Equip",
+    "装备"
+  ],
+  [
+    "Unequip",
+    "卸下"
+  ],
+  [
+    "Equipped",
+    "已装备"
+  ],
+  [
+    "Installed",
+    "已安装"
+  ],
+  [
+    "Install",
+    "安装"
+  ],
+  [
+    "Uninstall",
+    "卸载"
+  ],
+  [
+    "UNINSTALL",
+    "卸载"
+  ],
+  [
+    "Not installed",
+    "未安装"
+  ],
+  [
+    "Not equipped",
+    "未装备"
+  ],
+  [
+    "CPU Cores",
+    "CPU 核心数"
+  ],
+  [
+    "CPU Frequency",
+    "CPU 频率"
+  ],
+  [
+    "Cores count",
+    "核心数量"
+  ],
+  [
+    "GPU Memory",
+    "GPU 显存"
+  ],
+  [
+    "GPU Frequency",
+    "GPU 频率"
+  ],
+  [
+    "RAM Memory",
+    "内存容量"
+  ],
+  [
+    "RAM Frequency",
+    "内存频率"
+  ],
+  [
+    "PSU Power",
+    "电源功率"
+  ],
+  [
+    "PSU Protection",
+    "电源保护"
+  ],
+  [
+    "PSU Total",
+    "电源总容量"
+  ],
+  [
+    "Power",
+    "算力"
+  ],
+  [
+    "Power Consuming",
+    "功耗"
+  ],
+  [
+    "Power consuming",
+    "功耗"
+  ],
+  [
+    "Protection",
+    "保护"
+  ],
+  [
+    "Memory",
+    "内存"
+  ],
+  [
+    "Usage / Available",
+    "用量 / 可用"
+  ],
+  [
+    "Performance Ratio",
+    "性能比率"
+  ],
+  [
+    "Detect Rate",
+    "检出率"
+  ],
+  [
+    "Basic Required",
+    "基础需求"
+  ],
+  [
+    "Usage",
+    "使用量"
+  ],
+  [
+    "Supply",
+    "供给"
+  ],
+  [
+    "Demand",
+    "需求"
+  ],
+  [
+    "Boot Status",
+    "启动状态"
+  ],
+  [
+    "BOOTED",
+    "已启动"
+  ],
+  [
+    "NOT BOOTED",
+    "未启动"
+  ],
+  [
+    "SORT",
+    "排序"
+  ],
+  [
+    "FUNC:",
+    "功能："
+  ],
+  [
+    "Search...",
+    "搜索…"
+  ],
+  [
+    "Search in message...",
+    "在消息中搜索…"
+  ],
+  [
+    "No hardware data",
+    "暂无硬件数据"
+  ],
+  [
+    "No hardware equipped",
+    "尚未装备硬件"
+  ],
+  [
+    "No software data",
+    "暂无软件数据"
+  ],
+  [
+    "No loadout data yet",
+    "暂无配置数据"
+  ],
+  [
+    "No programs found",
+    "未找到程序"
+  ],
+  [
+    "No consumption data",
+    "暂无消耗数据"
+  ],
+  [
+    "No resource data",
+    "暂无资源数据"
+  ],
+  [
+    "No items in market.",
+    "市场中没有物品。"
+  ],
+  [
+    "No description available.",
+    "暂无描述。"
+  ],
+  [
+    "No market data available.",
+    "暂无市场数据。"
+  ],
+  [
+    "No market data cached yet.",
+    "尚无市场缓存。"
+  ],
+  [
+    "No market data cached. Click 🔄 to refresh.",
+    "尚无市场缓存。点击 🔄 刷新。"
+  ],
+  [
+    "No cached market data available.",
+    "没有可用的市场缓存。"
+  ],
+  [
+    "Requesting market data...",
+    "正在请求市场数据…"
+  ],
+  [
+    "Refreshing market data...",
+    "正在刷新市场数据…"
+  ],
+  [
+    "Refreshing (sequential)...",
+    "正在依次刷新…"
+  ],
+  [
+    "Requesting market refresh and failed-job cleanup…",
+    "正在请求市场刷新和失败任务清理…"
+  ],
+  [
+    "No valuable data yet. Click \"Start Valuable Search\" to scan servers.",
+    "暂无贵重文件数据。点击“开始搜索贵重文件”扫描服务器。"
+  ],
+  [
+    "No download data yet. Click \"Start Valuable Search\" to scan.",
+    "暂无下载数据。点击“开始搜索贵重文件”进行扫描。"
+  ],
+  [
+    "No servers or downloads selected for selling.",
+    "没有选中要出售的服务器或下载文件。"
+  ],
+  [
+    "Run \"Start Valuable Search\" to see the maintenance status of servers. If no servers are shown after the search, there is no upcoming or active maintenance.",
+    "运行“开始搜索贵重文件”查看服务器维护状态。搜索后若没有列出服务器，表示没有即将开始或正在进行的维护。"
+  ],
+  [
+    "Force selected!",
+    "对选中项触发维护"
+  ],
+  [
+    "Force maintenance on all checked servers (furthest first)",
+    "对全部选中的服务器触发维护（从最远处开始）"
+  ],
+  [
+    "In-progress...",
+    "正在执行…"
+  ],
+  [
+    "Forcing...",
+    "正在触发…"
+  ],
+  [
+    "No logs yet.",
+    "暂无日志。"
+  ],
+  [
+    "No cor3.gg tab found.",
+    "未找到 cor3.gg 标签页。"
+  ],
+  [
+    "No cor3.gg tab found",
+    "未找到 cor3.gg 标签页"
+  ],
+  [
+    "No cor3.gg tab",
+    "没有 cor3.gg 标签页"
+  ],
+  [
+    "Open cor3.gg first",
+    "请先打开 cor3.gg"
+  ],
+  [
+    "Make sure you have the cor3.gg tab open.",
+    "请确保已打开 cor3.gg 游戏标签页。"
+  ],
+  [
+    "Side panel not supported in this browser.",
+    "当前浏览器不支持侧边栏。"
+  ],
+  [
+    "Invalid access token",
+    "访问令牌无效"
+  ],
+  [
+    "Access token expired. Page refresh required.",
+    "访问令牌已过期，请刷新页面。"
+  ],
+  [
+    "Failed to load daily ops",
+    "加载每日行动失败"
+  ],
+  [
+    "No data available. Refresh the page.",
+    "暂无数据，请刷新页面。"
+  ],
+  [
+    "Using cached data (content script not responding)",
+    "正在使用缓存（游戏脚本未响应）"
+  ],
+  [
+    "Using cached data (error occurred)",
+    "正在使用缓存（发生错误）"
+  ],
+  [
+    "Refreshing daily ops...",
+    "正在刷新每日行动…"
+  ],
+  [
+    "Starting daily hack solver...",
+    "正在启动每日入侵执行器…"
+  ],
+  [
+    "Starting search...",
+    "正在开始搜索…"
+  ],
+  [
+    "Starting Valuable Search...",
+    "正在开始搜索贵重文件…"
+  ],
+  [
+    "Auto Jobs stopped by user.",
+    "用户已停止自动任务。"
+  ],
+  [
+    "Valuable Search stopped by user.",
+    "用户已停止贵重文件搜索。"
+  ],
+  [
+    "Valuable Seller stopped by user.",
+    "用户已停止贵重文件出售。"
+  ],
+  [
+    "Force maintenance already running",
+    "维护触发任务已在运行"
+  ],
+  [
+    "No servers selected for batch force maintenance",
+    "没有选中要批量触发维护的服务器"
+  ],
+  [
+    "Software + hardware — highest actual Power",
+    "软件 + 硬件 — 优先最高实际算力"
+  ],
+  [
+    "Software only — keep current hardware",
+    "仅调整软件 — 保持当前硬件"
+  ],
+  [
+    "Compare owned tools by actual Power on your current hardware. Hardware stays unchanged. Changes apply from the next job.",
+    "根据当前硬件比较已拥有工具的实际算力；硬件保持不变。从下一个任务起生效。"
+  ],
+  [
+    "Compare owned software + hardware by actual HACK/DECRYPT Power. Equal Power favors fewer swaps. Changes apply from the next job.",
+    "比较已拥有软件与硬件的实际入侵 / 解密算力；算力相同时优先减少更换。从下一个任务起生效。"
+  ],
+  [
+    "Check for Updates",
+    "检查更新"
+  ],
+  [
+    "Checking...",
+    "正在检查…"
+  ],
+  [
+    "You're up to date!",
+    "已是最新版本！"
+  ],
+  [
+    "Could not check for updates. Check your connection.",
+    "无法检查更新，请检查网络连接。"
+  ],
+  [
+    "Failed to fetch remote versions",
+    "无法获取远程版本"
+  ],
+  [
+    "Website is recently updated",
+    "网站最近已更新"
+  ],
+  [
+    "You are lagging behind in progress!",
+    "当前系统进度落后于目标版本！"
+  ],
+  [
+    "Patch version is changed. Check patch notes!",
+    "补丁版本已变化，请查看更新说明！"
+  ],
+  [
+    "Extension",
+    "扩展"
+  ],
+  [
+    "Web",
+    "网页"
+  ],
+  [
+    "System",
+    "系统"
+  ],
+  [
+    "Patch",
+    "补丁"
+  ],
+  [
+    "Detected",
+    "检测到"
+  ],
+  [
+    "Old",
+    "原版本"
+  ],
+  [
+    "Updated just now",
+    "刚刚更新"
+  ],
+  [
+    "Modified Version based on cor3-helper ver1.7.0",
+    "基于 cor3-helper ver1.7.0 的修改版"
+  ],
+  [
+    "By Chatgpt Sol 6.1, on 11/23/2026",
+    "由 Chatgpt Sol 6.1 修改，日期 11/23/2026"
+  ],
+  [
+    "Dev TCs",
+    "开发测试"
+  ],
+  [
+    "TC Script 1 (placeholder)",
+    "测试脚本 1（占位）"
+  ],
+  [
+    "TC Toggle 1 (placeholder)",
+    "测试开关 1（占位）"
+  ],
+  [
+    "TC Toggle 2 (placeholder)",
+    "测试开关 2（占位）"
+  ],
+  [
+    "TC Toggle 3 (placeholder)",
+    "测试开关 3（占位）"
+  ],
+  [
+    "Test reachability to a server",
+    "测试服务器可达性"
+  ],
+  [
+    "Pull get.map data",
+    "获取 get.map 地图数据"
+  ],
+  [
+    "— select server —",
+    "— 选择服务器 —"
+  ],
+  [
+    "— pull map first —",
+    "— 请先获取地图 —"
+  ],
+  [
+    "— none —",
+    "— 无 —"
+  ],
+  [
+    "No server selected",
+    "未选择服务器"
+  ],
+  [
+    "Sending get.map...",
+    "正在发送 get.map 请求…"
+  ],
+  [
+    "Timeout waiting for map data",
+    "等待地图数据超时"
+  ],
+  [
+    "Timeout waiting for reachability result (5m)",
+    "等待可达性测试结果超时（5 分钟）"
+  ],
+  [
+    "Reachable: YES",
+    "可达：是"
+  ],
+  [
+    "Reachable: NO —",
+    "可达：否 —"
+  ],
+  [
+    "Trigger Scripts",
+    "触发脚本"
+  ],
+  [
+    "Toggles",
+    "开关"
+  ],
+  [
+    "Toggle",
+    "开关"
+  ],
+  [
+    "Expedition",
+    "远征"
+  ],
+  [
+    "Expeditions",
+    "远征模块"
+  ],
+  [
+    "Active Expedition",
+    "当前远征"
+  ],
+  [
+    "Personal Drone Assembling",
+    "个人无人机组装"
+  ],
+  [
+    "Mercenaries",
+    "佣兵"
+  ],
+  [
+    "Loot Selling",
+    "掉落出售"
+  ],
+  [
+    "Inventory",
+    "仓库"
+  ],
+  [
+    "Archived Expeditions",
+    "历史远征"
+  ],
+  [
+    "Decisions",
+    "决策"
+  ],
+  [
+    "Master switch",
+    "总开关"
+  ],
+  [
+    "Expedition master switch",
+    "远征总开关"
+  ],
+  [
+    "Expand Expeditions",
+    "展开远征"
+  ],
+  [
+    "Collapse Expeditions",
+    "收起远征"
+  ],
+  [
+    "When Stash Is Full",
+    "仓库满出售"
+  ],
+  [
+    "Non-Drone Loot",
+    "出售非无人机"
+  ],
+  [
+    "All Expedition Loot",
+    "全出售"
+  ],
+  [
+    "Do not sell automatically.",
+    "不自动出售。"
+  ],
+  [
+    "Do not sell automatically",
+    "不自动出售"
+  ],
+  [
+    "When space is insufficient, sell the cheapest non-drone expedition loot. Stop as soon as enough space is available.",
+    "空间不足时出售最便宜的非无人机远征掉落，腾够空间即停止。"
+  ],
+  [
+    "Automatically sell all sellable non-drone expedition loot. Keep all drone materials.",
+    "自动出售所有可售的非无人机远征掉落，保留全部无人机材料。"
+  ],
+  [
+    "Automatically sell all sellable expedition loot, including drone materials.",
+    "自动出售全部可售远征掉落，包括无人机材料。"
+  ],
+  [
+    "The four modes are mutually exclusive; exactly one stays selected.",
+    "四种模式互斥，始终只有一项开启。"
+  ],
+  [
+    "Only item types in the expedition loot catalogue are sold automatically, including existing stock and future loot. Purchased copies of the same type cannot be distinguished. Unknown, unsellable, locked and pinned items are skipped.",
+    "自动出售仅匹配远征掉落清单中的物品类型，包含已有库存和后续掉落。同类物品的购买来源无法单独区分；未知、不可出售、锁定及固定物品会跳过。"
+  ],
+  [
+    "View protected drone materials (22 types)",
+    "查看无人机材料保护清单（22 类）"
+  ],
+  [
+    "Highest mercenary cost (CR)",
+    "最高费用（CR）"
+  ],
+  [
+    "Apply mercenary cost limit",
+    "启用佣兵费用上限"
+  ],
+  [
+    "Auto-dispatch after an expedition ends",
+    "远征结束后自动派遣"
+  ],
+  [
+    "Check and dispatch every 30 minutes",
+    "每 30 分钟检查并派遣"
+  ],
+  [
+    "Auto-choose the cheapest available mercenary",
+    "自动选择最便宜的可用佣兵"
+  ],
+  [
+    "Prefer USOL mercenaries",
+    "优先选择 USOL 佣兵"
+  ],
+  [
+    "Ignore elite mercenaries",
+    "排除精英佣兵"
+  ],
+  [
+    "Auto-claim expedition reward mail",
+    "自动领取远征奖励邮件"
+  ],
+  [
+    "Check mail now",
+    "立即检查邮件"
+  ],
+  [
+    "Check and dispatch now",
+    "立即检查并派遣"
+  ],
+  [
+    "Choose this mercenary",
+    "选择此佣兵"
+  ],
+  [
+    "Selected",
+    "已选择"
+  ],
+  [
+    "Selected:",
+    "已选择："
+  ],
+  [
+    "No mercenary selected",
+    "未选择"
+  ],
+  [
+    "Choose automatically by cost and filters",
+    "按费用与筛选条件自动选择"
+  ],
+  [
+    "Triggered when an expedition ends; follows the current cost limit and mercenary filters.",
+    "结束时触发统一检查；遵守当前费用上限和佣兵筛选。"
+  ],
+  [
+    "Check once immediately when enabled, then every 30 minutes.",
+    "开启时立即检查一次；此后每 30 分钟检查可用佣兵。"
+  ],
+  [
+    "While the game is online, check once a minute and claim recognized expedition reward mail only.",
+    "游戏在线时每分钟检查，仅领取识别到的远征奖励邮件。"
+  ],
+  [
+    "Both dispatch triggers share one workflow. Existing expeditions and running checks prevent duplicate dispatch. The check button follows the enabled dispatch settings.",
+    "两种自动派遣共用同一流程。正在执行或已有远征时，不会重复派遣。立即检查按钮按已启用的派遣开关运行。"
+  ],
+  [
+    "Save",
+    "保存"
+  ],
+  [
+    "Mercenary cost limit saved",
+    "佣兵费用上限已保存"
+  ],
+  [
+    "Cost limit must be a non-negative number",
+    "费用上限必须是非负数字"
+  ],
+  [
+    "Scoring weights must be numbers",
+    "评分权重必须是数字"
+  ],
+  [
+    "Decision weights saved",
+    "决策权重已保存"
+  ],
+  [
+    "Auto-choose decisions",
+    "自动选择决策"
+  ],
+  [
+    "Choose immediately instead of waiting",
+    "立即自动选择，不等待截止"
+  ],
+  [
+    "Enable custom scoring weights",
+    "启用自定义评分权重"
+  ],
+  [
+    "Enable the veteran scoring strategy",
+    "启用老兵特殊策略"
+  ],
+  [
+    "Loot weight",
+    "收益权重"
+  ],
+  [
+    "Risk weight",
+    "风险权重"
+  ],
+  [
+    "Options are ranked by weighted loot and risk. Unless immediate choice is enabled, submit during the last 60 seconds. The original veteran strategy uses loot weight 1 and risk weight 10.",
+    "按收益与风险加权评分选择；未启用“立即”时，在决策截止前 60 秒内提交。老兵特殊策略沿用原版：收益权重 1、风险权重 10。"
+  ],
+  [
+    "Choose this option",
+    "选择此项"
+  ],
+  [
+    "No pending decisions.",
+    "没有待处理的决策。"
+  ],
+  [
+    "No pending decisions",
+    "无待处理"
+  ],
+  [
+    "No active expedition.",
+    "当前没有远征。"
+  ],
+  [
+    "No archived expedition data yet.",
+    "尚无历史远征数据。"
+  ],
+  [
+    "No cached data yet. Enable the Expedition module.",
+    "尚无缓存，请启用远征模块。"
+  ],
+  [
+    "Server state has not been read yet",
+    "尚未读取服务器状态"
+  ],
+  [
+    "Process this expedition's rewards",
+    "处理本轮奖励"
+  ],
+  [
+    "Refresh expedition information",
+    "刷新远征信息"
+  ],
+  [
+    "Refresh mercenaries and costs",
+    "刷新佣兵与费用"
+  ],
+  [
+    "Refresh inventory",
+    "刷新仓库"
+  ],
+  [
+    "Refresh archived expeditions",
+    "刷新历史远征"
+  ],
+  [
+    "Pin expedition timer",
+    "固定远征倒计时"
+  ],
+  [
+    "Copy expedition logs",
+    "复制远征日志"
+  ],
+  [
+    "Keep the latest 200 entries · Local time · Logging continues while collapsed",
+    "保留最近 200 条 · 本地时间 · 收起界面后继续记录"
+  ],
+  [
+    "Waiting for game activity. Refresh the game tab after updating the extension.",
+    "等待游戏活动。更新扩展后请刷新游戏标签页。"
+  ],
+  [
+    "The original extension does not implement direct drone assembly. This panel shows stored drone materials; submit assembly stages in the game.",
+    "原版尚未实现直接组装操作。这里显示仓库中的无人机材料；实际阶段交付仍在游戏内进行。"
+  ],
+  [
+    "Drone material",
+    "无人机材料"
+  ],
+  [
+    "Quantity owned",
+    "持有数量"
+  ],
+  [
+    "Mercenary",
+    "佣兵"
+  ],
+  [
+    "Total cost",
+    "总费用"
+  ],
+  [
+    "Insurance",
+    "保险"
+  ],
+  [
+    "Risk score",
+    "风险评分"
+  ],
+  [
+    "Actual cost",
+    "实际费用"
+  ],
+  [
+    "Container opening cost",
+    "容器开启费用"
+  ],
+  [
+    "Decision time remaining",
+    "决策剩余时间"
+  ],
+  [
+    "Risk / Loot",
+    "风险 / 收益"
+  ],
+  [
+    "Rank / Completed missions",
+    "等级 / 完成任务"
+  ],
+  [
+    "Failure survival / Death chance",
+    "失败存活 / 阵亡概率"
+  ],
+  [
+    "Faction",
+    "阵营"
+  ],
+  [
+    "Specialization",
+    "专长"
+  ],
+  [
+    "Trait",
+    "特质"
+  ],
+  [
+    "Required reputation",
+    "所需声望"
+  ],
+  [
+    "Cost unknown; automated dispatch does not use unverified prices.",
+    "费用尚未确认；自动派遣不会使用未知费用。"
+  ],
+  [
+    "Rarity",
+    "品质"
+  ],
+  [
+    "Sellable",
+    "可出售"
+  ],
+  [
+    "Unit price",
+    "单价"
+  ],
+  [
+    "Craftable",
+    "可用于制作"
+  ],
+  [
+    "Usable",
+    "可使用"
+  ],
+  [
+    "Sell 1 manually",
+    "手动出售 1 件"
+  ],
+  [
+    "Click again to confirm sale",
+    "再次点击确认出售"
+  ],
+  [
+    "Temporary stash expansion",
+    "临时仓库扩容"
+  ],
+  [
+    "The rental has ended. Check the game's grace period and item-loss notice.",
+    "租期已结束，请留意游戏内的宽限期与物品损失提示。"
+  ],
+  [
+    "Completed at",
+    "完成时间"
+  ],
+  [
+    "Cost / Risk",
+    "费用 / 风险"
+  ],
+  [
+    "Time unknown",
+    "时间未知"
+  ],
+  [
+    "Waiting for a state refresh",
+    "等待状态刷新"
+  ],
+  [
+    "In progress",
+    "进行中"
+  ],
+  [
+    "Awaiting decision",
+    "等待决策"
+  ],
+  [
+    "Ended",
+    "已结束"
+  ],
+  [
+    "Resting",
+    "休息中"
+  ],
+  [
+    "Contracted",
+    "执行中"
+  ],
+  [
+    "Veteran",
+    "老兵"
+  ],
+  [
+    "Recruit",
+    "新兵"
+  ],
+  [
+    "Experienced",
+    "熟练"
+  ],
+  [
+    "Full success",
+    "完全成功"
+  ],
+  [
+    "Partial success",
+    "部分成功"
+  ],
+  [
+    "Dead",
+    "阵亡"
+  ],
+  [
+    "Common",
+    "普通"
+  ],
+  [
+    "Uncommon",
+    "优秀"
+  ],
+  [
+    "Rare",
+    "稀有"
+  ],
+  [
+    "Epic",
+    "史诗"
+  ],
+  [
+    "Legendary",
+    "传奇"
+  ],
+  [
+    "Quest",
+    "任务"
+  ],
+  [
+    "No insurance",
+    "无"
+  ],
+  [
+    "Insured",
+    "有"
+  ],
+  [
+    "Unknown mercenary",
+    "未知佣兵"
+  ],
+  [
+    "Unknown item",
+    "未知物品"
+  ],
+  [
+    "Unknown location",
+    "地点未知"
+  ],
+  [
+    "Unknown zone",
+    "区域未知"
+  ],
+  [
+    "Mercenary unknown",
+    "佣兵未知"
+  ],
+  [
+    "Auto-claim is off",
+    "自动领取已关闭"
+  ],
+  [
+    "Waiting to check inventory",
+    "等待检查仓库"
+  ],
+  [
+    "Waiting to check expedition mail",
+    "等待检查远征奖励邮件"
+  ],
+  [
+    "Waiting for the first check",
+    "等待首次检查"
+  ],
+  [
+    "Creating the 30-minute check schedule",
+    "正在建立 30 分钟检查计划"
+  ],
+  [
+    "30-minute checks are off",
+    "30 分钟检查未开启"
+  ],
+  [
+    "Scheduled checks paused (settings retained)",
+    "定时检查已暂停（设置已保留）"
+  ],
+  [
+    "Paused · Enable the master switch to resume saved Expedition settings",
+    "已暂停 · 开启总开关后恢复已保存的远征设置"
+  ],
+  [
+    "Paused · Helper-Only Mode is disabling automation",
+    "已暂停 · Helper-Only 模式正在禁用自动操作"
+  ],
+  [
+    "Waiting for game data · Runs according to enabled settings",
+    "等待游戏数据 · 开启子功能后按设置运行"
+  ],
+  [
+    "Expedition module paused",
+    "远征模块已暂停"
+  ],
+  [
+    "Expedition module paused; sale mode retained",
+    "远征模块已暂停，出售模式已保留"
+  ],
+  [
+    "Expedition module paused; mail settings retained",
+    "远征模块已暂停，邮件设置已保留"
+  ],
+  [
+    "Open the cor3.gg game tab first",
+    "请先打开 cor3.gg 游戏标签页"
+  ],
+  [
+    "Request sent; check the logs",
+    "请求已发送，请查看日志"
+  ],
+  [
+    "COR3 Helper — Log Viewer",
+    "COR3 Helper — 日志查看器"
+  ],
+  [
+    "WS Messages",
+    "WebSocket 消息"
+  ],
+  [
+    "Auto Job Solver Logs",
+    "自动任务日志"
+  ],
+  [
+    "Auto Valuable Seller Logs",
+    "贵重文件出售日志"
+  ],
+  [
+    "Error Logs",
+    "错误日志"
+  ],
+  [
+    "Page Console Logs",
+    "页面控制台日志"
+  ],
+  [
+    "Extension Console Logs",
+    "扩展控制台日志"
+  ],
+  [
+    "Log category",
+    "日志类别"
+  ],
+  [
+    "Log section",
+    "日志区间"
+  ],
+  [
+    "Display format",
+    "显示格式"
+  ],
+  [
+    "Raw",
+    "原始内容"
+  ],
+  [
+    "JSON-pretty",
+    "JSON 格式化"
+  ],
+  [
+    "Tree View",
+    "树状视图"
+  ],
+  [
+    "Time",
+    "时间"
+  ],
+  [
+    "Level",
+    "等级"
+  ],
+  [
+    "Message",
+    "消息"
+  ],
+  [
+    "Message Detail",
+    "消息详情"
+  ],
+  [
+    "Preview",
+    "预览"
+  ],
+  [
+    "Size",
+    "大小"
+  ],
+  [
+    "Event",
+    "事件"
+  ],
+  [
+    "Action",
+    "操作"
+  ],
+  [
+    "Dir",
+    "方向"
+  ],
+  [
+    "Sent",
+    "已发送"
+  ],
+  [
+    "Received",
+    "已接收"
+  ],
+  [
+    "Body",
+    "正文"
+  ],
+  [
+    "Toggle live auto-refresh",
+    "切换实时自动刷新"
+  ],
+  [
+    "Toggle send panel",
+    "显示 / 隐藏发送面板"
+  ],
+  [
+    "Live",
+    "实时"
+  ],
+  [
+    "Live ON",
+    "实时已开启"
+  ],
+  [
+    "Refresh current page messages",
+    "刷新当前页消息"
+  ],
+  [
+    "Clear all messages",
+    "清空全部消息"
+  ],
+  [
+    "Clear",
+    "清空"
+  ],
+  [
+    "Send",
+    "发送"
+  ],
+  [
+    "Export",
+    "导出"
+  ],
+  [
+    "Export filtered messages",
+    "导出筛选后的消息"
+  ],
+  [
+    "Export as JSON",
+    "导出为 JSON"
+  ],
+  [
+    "Export as MD Table",
+    "导出为 Markdown 表格"
+  ],
+  [
+    "Open external log viewer on new window",
+    "在新窗口打开离线日志查看器"
+  ],
+  [
+    "Import",
+    "导入"
+  ],
+  [
+    "Import log file (JSON, MD, or Discord clipboard format)",
+    "导入日志文件（JSON、Markdown 或 Discord 剪贴板格式）"
+  ],
+  [
+    "Click \"📂 Import\" to load an exported log file.",
+    "点击“📂 导入”加载已导出的日志文件。"
+  ],
+  [
+    "No WebSocket messages yet.",
+    "暂无 WebSocket 消息。"
+  ],
+  [
+    "No logs loaded.",
+    "尚未加载日志。"
+  ],
+  [
+    "Enable \"Live\" for real-time updates",
+    "开启“实时”以接收实时更新"
+  ],
+  [
+    "or select a log section to browse history.",
+    "或选择日志区间浏览历史记录。"
+  ],
+  [
+    "Could not parse the imported file. Supported formats: JSON (Export or Copy-All-Logs), MD table, Discord clipboard format.",
+    "无法解析导入文件。支持 JSON（导出或复制全部日志）、Markdown 表格以及 Discord 剪贴板格式。"
+  ],
+  [
+    "Error reading file",
+    "读取文件失败"
+  ],
+  [
+    "Failed to send",
+    "发送失败"
+  ],
+  [
+    "Error",
+    "错误"
+  ],
+  [
+    "Updated",
+    "已更新"
+  ],
+  [
+    "Extension was reloaded",
+    "扩展已重载"
+  ],
+  [
+    "Target",
+    "目标"
+  ],
+  [
+    "Other",
+    "其他"
+  ],
+  [
+    "Market",
+    "市场"
+  ],
+  [
+    "Refresh error",
+    "刷新失败"
+  ],
+  [
+    "Filter by event or content...",
+    "按事件或内容筛选…"
+  ],
+  [
+    "Find next (Enter)",
+    "查找下一个（回车）"
+  ],
+  [
+    "Off (setting)",
+    "关"
+  ],
+  [
+    "Expedition settings",
+    "远征设置"
+  ],
+  [
+    "Dispatch after completion",
+    "结束后派遣"
+  ],
+  [
+    "30-minute dispatch",
+    "30 分钟派遣"
+  ],
+  [
+    "Auto claim mail",
+    "自动领取邮件"
+  ],
+  [
+    "Sale mode",
+    "出售模式"
+  ],
+  [
+    "Helper mode",
+    "辅助模式"
+  ],
+  [
+    "Now",
+    "现在"
+  ],
+  [
+    "Queued",
+    "排队中"
+  ],
+  [
+    "In maintenance",
+    "维护中"
+  ],
+  [
+    "Upcoming",
+    "即将维护"
+  ],
+  [
+    "Warning",
+    "警告"
+  ],
+  [
+    "Debug",
+    "调试"
+  ],
+  [
+    "Info",
+    "信息"
+  ],
+  [
+    "Open",
+    "开放"
+  ],
+  [
+    "Taken",
+    "已接受"
+  ],
+  [
+    "Pending",
+    "待处理"
+  ],
+  [
+    "Skipped",
+    "已跳过"
+  ],
+  [
+    "Aborted",
+    "已中止"
+  ],
+  [
+    "Done",
+    "已完成"
+  ],
+  [
+    "Very hard",
+    "极难"
+  ],
+  [
+    "Impossible",
+    "不可能"
+  ],
+  [
+    "Failure",
+    "失败"
+  ],
+  [
+    "Death",
+    "阵亡"
+  ],
+  [
+    "Performance",
+    "性能"
+  ],
+  [
+    "Response",
+    "响应"
+  ],
+  [
+    "Source",
+    "来源"
+  ],
+  [
+    "Ready",
+    "就绪"
+  ],
+  [
+    "Min",
+    "最小值"
+  ],
+  [
+    "Max",
+    "最大值"
+  ],
+  [
+    "Expired access token",
+    "访问令牌已过期"
+  ],
+  [
+    "Refresh failed",
+    "刷新失败"
+  ],
+  [
+    "No pending expedition reward mail found",
+    "未发现未领取的远征奖励邮件"
+  ],
+  [
+    "Waiting for initial game refresh",
+    "等待游戏初始刷新完成"
+  ],
+  [
+    "Waiting for retry cooldown",
+    "等待重试冷却"
+  ],
+  [
+    "Checking stash using the selected sale mode",
+    "正在按出售模式检查仓库"
+  ],
+  [
+    "Expedition operation failed",
+    "远征操作失败"
+  ],
+  [
+    "Expedition task is running; please retry later",
+    "远征任务正在执行，请稍后重试"
+  ],
+  [
+    "Unsupported expedition operation",
+    "不支持的远征操作"
+  ],
+  [
+    "Stash renewal is a manual action only",
+    "仓库续租仅允许手动操作"
+  ],
+  [
+    "Expedition check requested; see the summary and logs",
+    "已请求远征检查，请查看运行摘要与日志"
+  ],
+  [
+    "Extension reloaded; refresh the game",
+    "扩展已重载，请刷新游戏"
+  ],
+  [
+    "Expedition operation queued; please retry later",
+    "远征操作已排队，请稍后重试"
+  ],
+  [
+    "Expedition check queued; waiting for the current task",
+    "远征检查已排队，等待当前任务完成"
+  ],
+  [
+    "Merged into the pending expedition check",
+    "已合并到等待中的远征检查"
+  ],
+  [
+    "Expedition workflow is running; check the logs shortly",
+    "远征流程正在执行，请稍后检查日志"
+  ],
+  [
+    "Expedition module paused or game disconnected",
+    "远征模块已暂停或游戏连接已断开"
+  ],
+  [
+    "Expedition module disabled or game disconnected",
+    "远征模块未启用或游戏连接已断开"
+  ],
+  [
+    "Module or settings changed",
+    "远征模块或设置已更改"
+  ],
+  [
+    "Module paused; this operation was canceled",
+    "远征模块已暂停，本轮操作已取消"
+  ],
+  [
+    "Dispatch parameters are incomplete",
+    "派遣参数不完整"
+  ],
+  [
+    "Expedition location configuration is incomplete",
+    "远征地点配置不完整"
+  ],
+  [
+    "Missing expedition ID",
+    "缺少远征编号"
+  ],
+  [
+    "Unknown mercenary market",
+    "未知佣兵市场"
+  ],
+  [
+    "Mercenary refresh timed out; old cached data was not used",
+    "佣兵刷新超时，未使用旧缓存"
+  ],
+  [
+    "Mercenary refresh did not return complete fresh data",
+    "佣兵刷新未返回本轮完整数据"
+  ],
+  [
+    "Mercenary settings changed; refresh canceled",
+    "远征设置已更改，佣兵刷新已取消"
+  ],
+  [
+    "Could not confirm the mercenary's latest cost",
+    "无法确认佣兵最新费用"
+  ],
+  [
+    "Latest cost exceeds the limit; dispatch stopped",
+    "最新费用超过上限，未派遣"
+  ],
+  [
+    "USOL route is under maintenance or unreachable",
+    "USOL 路径处于维护或不可达"
+  ],
+  [
+    "CORE mercenary-cost response timed out; refresh stopped",
+    "CORE 佣兵费用响应超时，已停止本轮刷新"
+  ],
+  [
+    "USOL mercenary-cost response timed out; refresh stopped",
+    "USOL 佣兵费用响应超时，已停止本轮刷新"
+  ],
+  [
+    "An expedition exists or its state is unconfirmed; dispatch stopped",
+    "已有远征或状态无法确认，未派遣"
+  ],
+  [
+    "Unrecognized expedition state; operations stopped",
+    "远征状态格式无法识别，已停止操作"
+  ],
+  [
+    "No valid stash data received",
+    "未获得有效仓库数据"
+  ],
+  [
+    "Stash capacity unknown; cannot calculate how much to sell",
+    "仓库容量未知，无法判断需要出售多少物品"
+  ],
+  [
+    "Item does not meet the current sale policy",
+    "该物品不符合当前出售策略"
+  ],
+  [
+    "Invalid post-sale quantity",
+    "出售后数量格式无效"
+  ],
+  [
+    "Sale response has no inventory; result is unconfirmed",
+    "出售响应缺少库存，结果未知"
+  ],
+  [
+    "Server has not confirmed the whole stack was sold",
+    "服务器尚未确认整组物品已售出"
+  ],
+  [
+    "Some sale results remain unconfirmed; check after cooldown",
+    "部分出售结果尚待确认，冷却结束后再检查"
+  ],
+  [
+    "Server response timed out; result is unconfirmed",
+    "服务器响应超时，结果待确认"
+  ],
+  [
+    "Server rejected the operation",
+    "服务器拒绝操作"
+  ],
+  [
+    "Game session expired; waiting to reconnect",
+    "游戏会话已过期，等待重新连接"
+  ],
+  [
+    "Game response timed out; refresh the game and check again",
+    "游戏响应超时，请刷新游戏后检查"
+  ],
+  [
+    "Automatic dispatch is off",
+    "自动派遣已关闭"
+  ],
+  [
+    "Automatic dispatch is paused",
+    "自动派遣已暂停"
+  ],
+  [
+    "Auto claim is off or this is not a confirmed expedition reward message",
+    "自动领取未开启或未确认是远征奖励邮件"
+  ],
+  [
+    "Sale mode changed; this batch stopped and will be checked using the new mode",
+    "出售模式已更改，本批操作停止；将按新模式重新检查"
+  ],
+  [
+    "Not enough non-drone loot to free the required space; drone materials were kept",
+    "非无人机远征掉落不足以腾出所需空间；已保留无人机材料"
+  ],
+  [
+    "Sale batch limit reached; waiting for the next check",
+    "本批出售达到操作上限，等待下一次检查"
+  ],
+  [
+    "Previous mail claim is unconfirmed; retry later",
+    "上次邮件领取结果待确认，稍后重试"
+  ],
+  [
+    "Unrecognized mailbox data",
+    "邮箱数据格式无法识别"
+  ],
+  [
+    "Auto claim turned off; this check stopped",
+    "自动领取已关闭，本轮停止"
+  ],
+  [
+    "Mail claim response does not match the attachment; further actions stopped",
+    "邮件领取响应无法对应当前附件，已停止后续操作"
+  ],
+  [
+    "Not enough stash space to claim all rewards; sale mode is off",
+    "仓库空间不足，奖励尚未全部领取；出售模式为关闭"
+  ],
+  [
+    "Reward claim rejected due to space; freeing space before re-reading mail",
+    "奖励领取因空间不足被拒绝；先腾出所需空间，再重新读取邮箱"
+  ],
+  [
+    "Mailbox refresh failed",
+    "刷新邮箱失败"
+  ],
+  [
+    "Rewards still unconfirmed after freeing space; this check stopped",
+    "腾出空间后仍未确认全部奖励领取，本轮停止"
+  ],
+  [
+    "Unknown mail claim result; this check stopped",
+    "邮件返回未知领取结果，本轮停止"
+  ],
+  [
+    "Could not verify mailbox state",
+    "无法复核邮箱状态"
+  ],
+  [
+    "Mailbox still contains pending attachments; dispatch stopped",
+    "邮箱仍有待领取附件，已停止派遣"
+  ],
+  [
+    "Checking expedition reward mail",
+    "正在检查远征奖励邮件"
+  ],
+  [
+    "Processing the completed expedition",
+    "正在处理已结束远征"
+  ],
+  [
+    "Failed expedition includes insurance compensation; handle it in the game before closing",
+    "失败远征含保险赔付，请先在游戏中处理；未自动关闭以免损失奖励"
+  ],
+  [
+    "Reward container response mismatch",
+    "奖励容器响应不匹配"
+  ],
+  [
+    "Not enough stash space; claiming and dispatch paused",
+    "仓库空间不足，暂停领取与派遣"
+  ],
+  [
+    "Previous expedition is not archived yet; dispatch paused until the next refresh",
+    "上轮远征尚未完成归档，暂停派遣；下次刷新复核"
+  ],
+  [
+    "Check complete",
+    "本轮检查完成"
+  ],
+  [
+    "Expedition data refreshed",
+    "远征信息已刷新"
+  ],
+  [
+    "An expedition is running or awaits processing; no duplicate dispatch",
+    "已有远征进行中或等待处理，本轮不重复派遣"
+  ],
+  [
+    "No confirmed free stash slot; dispatch paused",
+    "仓库没有可确认的空位，暂停派遣"
+  ],
+  [
+    "No available mercenary meets the cost and filter rules; waiting for the next check",
+    "暂无符合费用与筛选条件的可用佣兵，等待下次检查"
+  ],
+  [
+    "New expedition detected; duplicate dispatch canceled",
+    "检测到新远征，取消重复派遣"
+  ],
+  [
+    "Mercenary filters changed; this check stopped",
+    "佣兵筛选条件已更改，本轮停止"
+  ],
+  [
+    "Dispatch response does not match the selected mercenary; result is unconfirmed",
+    "派遣响应无法对应所选佣兵，结果待确认"
+  ],
+  [
+    "Dispatch confirmed",
+    "派遣已确认"
+  ],
+  [
+    "Sale completed",
+    "出售完成"
+  ],
+  [
+    "Enter WS message, e.g. 42[\"desktop\",{\"action\":\"get.options\"}]",
+    "输入 WebSocket 消息，例如 42[\"desktop\",{\"action\":\"get.options\"}]"
+  ],
+  [
+    "Updates detected",
+    "发现更新"
+  ],
+  [
+    "Download from GitHub",
+    "从 GitHub 下载"
+  ],
+  [
+    "Download ZIP, extract, and reload on chrome://extensions",
+    "下载 ZIP，解压后在 chrome://extensions 重新加载"
+  ],
+  [
+    "Software",
+    "软件"
+  ],
+  [
+    "Hardware",
+    "硬件"
+  ],
+  [
+    "Cleanup error",
+    "清理失败"
+  ],
+  [
+    "Equip failed",
+    "装备失败"
+  ],
+  [
+    "GPU Power",
+    "GPU 算力"
+  ],
+  [
+    "Frequency",
+    "频率"
+  ],
+  [
+    "Tags",
+    "标签"
+  ],
+  [
+    "Enter",
+    "回车"
+  ],
+  [
+    "Escape",
+    "Esc"
+  ],
+  [
+    "Failed to start Valuable Search",
+    "无法启动贵重物品搜索"
+  ],
+  [
+    "Failed to start Valuable Seller",
+    "无法启动贵重物品出售"
+  ],
+  [
+    "Failed to send auto jobs to content script",
+    "无法将自动任务请求发送至游戏脚本"
+  ],
+  [
+    "Check requested",
+    "已请求检查"
+  ],
+  [
+    "Frequency GHz",
+    "频率 GHz"
+  ],
+  [
+    "Cores count count",
+    "核心数"
+  ],
+  [
+    "Power PFLOPS",
+    "算力 PFLOPS"
+  ],
+  [
+    "Memory TB",
+    "内存 TB"
+  ],
+  [
+    "Power kW",
+    "功率 kW"
+  ],
+  [
+    "Protection %",
+    "保护率 %"
+  ],
+  [
+    "Power consuming kW",
+    "功耗 kW"
+  ],
+  [
+    "Mercenary refresh returned incomplete data",
+    "佣兵刷新返回不完整"
+  ]
+]

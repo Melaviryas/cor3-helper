@@ -1,3 +1,6 @@
+import './merc-debug-ui.js';
+import './selective-loot-ui.js';
+import './periodic-merc-ui.js';
 // --- Mercenaries ---
 import { _h, _noData, _clearEl, _safeSetHtml } from './dom-helpers.js';
 import { getCor3Tab, waitForStorageKey } from './utils.js';

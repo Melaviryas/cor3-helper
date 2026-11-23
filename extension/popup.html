@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<!-- Main View -->
+<div id="mainView">
+    <div class="header-row">
+        <h3><svg width="20" height="20" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:bottom;margin-right:4px;"><path d="M75 0C33.5752 0 0 33.5752 0 75C0 116.425 33.5752 150 75 150C116.425 150 150 116.425 150 75C150 33.5752 116.425 0 75 0ZM40.7212 84.9165L65.6992 109.894C67.3483 111.544 69.5251 112.445 71.8338 112.445H78.1882C80.5189 112.445 82.6957 111.544 84.3228 109.894L106.882 87.3351C108.641 85.5761 110.994 84.5866 113.5 84.5866C116.007 84.5866 118.338 85.5541 120.119 87.3351L121.68 88.8962C123.439 90.6552 124.428 93.0079 124.428 95.5145C124.428 98.0211 123.461 100.352 121.68 102.133L102.704 121.108C100.88 122.933 98.4828 123.835 96.0862 123.835C93.6895 123.835 91.2929 122.933 89.4679 121.108L89.314 120.954C87.6649 119.305 85.4881 118.404 83.1794 118.404H66.7546C64.4239 118.404 62.2471 119.305 60.6201 120.954L60.4881 121.086C56.8382 124.736 50.9235 124.736 47.2735 121.086L28.2982 102.111C26.5391 100.352 25.5497 97.9991 25.5497 95.4925C25.5497 92.9859 26.5171 90.6552 28.2982 88.8742L29.6614 87.511C31.3105 85.8619 32.212 83.6851 32.212 81.3764V68.6895C32.212 66.3588 31.3105 64.1821 29.6614 62.555L28.2982 61.1917C26.5391 59.4327 25.5497 57.08 25.5497 54.5734C25.5497 52.0668 26.5171 49.7362 28.2982 47.9552L47.2735 28.9798C50.9235 25.3298 56.8382 25.3298 60.4881 28.9798L60.6201 29.1117C62.2691 30.7608 64.4459 31.6623 66.7546 31.6623H83.1794C85.5101 31.6623 87.6869 30.7608 89.314 29.1117L89.4679 28.9578C93.1178 25.3078 99.0325 25.3078 102.682 28.9578L121.658 47.9332C123.417 49.6922 124.406 52.0449 124.406 54.5515C124.406 57.0581 123.439 59.3887 121.658 61.1698L120.097 62.7309C118.338 64.4899 115.985 65.4793 113.478 65.4793C110.972 65.4793 108.641 64.5119 106.86 62.7309L84.3448 40.1715C82.6957 38.5224 80.5189 37.6209 78.2102 37.6209H71.8558C69.5251 37.6209 67.3483 38.5224 65.7212 40.1715L40.7212 65.1495C39.0721 66.7986 38.1706 68.9754 38.1706 71.2841V78.7819C38.1706 81.0906 39.0721 83.2894 40.7212 84.9165Z" fill="#76C1D1"/></svg> COR3 Helper</h3>
+        <div class="header-btns">
+            <button class="header-icon-btn" id="popOutBtn" title="Open in separate window"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></button>
+            <button class="header-icon-btn" id="sidePanelBtn" title="Open as side panel"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="15" y1="3" x2="15" y2="21"/></svg></button>
+            <button class="header-icon-btn" id="refreshAllBtn" title="Refresh all data">🔄</button>
+            <button class="header-icon-btn" id="themeToggleBtn" title="Change theme">🎨</button>
+        </div>
+        <div class="theme-dropdown" id="themeDropdown">
+            <div class="theme-option active" data-theme="default"><span class="theme-swatch" style="background:#0a0e1a;border:1px solid #22283b;"></span> Default</div>
+            <div class="theme-option" data-theme="abyss"><span class="theme-swatch" style="background:#0a0e1a;border:1px solid #38bdf8;"></span> Abyss</div>
+            <div class="theme-option" data-theme="void"><span class="theme-swatch" style="background:#000000;border:1px solid #ff3c3c;"></span> Void</div>
+            <div class="theme-option" data-theme="nebula"><span class="theme-swatch" style="background:#0d0b14;border:1px solid #c084fc;"></span> Nebula</div>
+            <div class="theme-option" data-theme="tactical"><span class="theme-swatch" style="background:#0c0f0a;border:1px solid #84cc16;"></span> Tactical</div>
+            <div class="theme-option" data-theme="cyberpunk"><span class="theme-swatch" style="background:#0a0a12;border:1px solid #ff2d95;"></span> Cyberpunk</div>
+            <div class="theme-option" data-theme="ocean"><span class="theme-swatch" style="background:#071318;border:1px solid #00b4d8;"></span> Ocean</div>
+            <div class="theme-option" data-theme="ember"><span class="theme-swatch" style="background:#120c08;border:1px solid #f59e0b;"></span> Ember</div>
+            <div class="theme-option" data-theme="arctic"><span class="theme-swatch" style="background:#0e1520;border:1px solid #7dd3fc;"></span> Arctic</div>
+            <div class="theme-option" data-theme="original"><span class="theme-swatch" style="background:#141822;border:1px solid #76c1d1;"></span> Original</div>
+        </div>
+    </div>
+
+    <div class="ui-language-row" id="uiLanguageRow" data-i18n-skip>
+        <label for="uiLanguageSelect">Language / 语言</label>
+        <select id="uiLanguageSelect" aria-label="Language / 语言">
+            <option value="en">English</option>
+            <option value="zh-CN">简体中文</option>
+        </select>
+    </div>
+
+    <!-- Helper Mode Toggle -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 10px;margin-bottom:4px;background:var(--bg-card);border-radius:6px;border:1px solid var(--border);">
+        <span style="font-size:10px;color:var(--text-secondary);">🛡️ Helper-Only Mode <span style="color:var(--text-dim);font-size:9px;">(hides automation)</span></span>
+        <label class="alarm-toggle-switch">
+            <input type="checkbox" id="helperModeToggle">
+            <span class="slider-track"></span>
+        </label>
+    </div>
+
+    <!-- Pinned Timers -->
+    <div class="section" id="pinnedTimersSection" style="display:none;">
+        <div class="section-title">📌 Pinned Timers</div>
+        <div id="pinnedTimersContainer"></div>
+    </div>
+
+
+    <!-- Auto Job Solver Section -->
+    <div class="auto-jobs-section" id="autoJobSolverSection" style="display:none;">
+        <div class="section-title">
+            <span>🤖 Auto Job Solver</span>
+            <div style="display:flex;gap:4px;">
+                <button id="dismissAllFailedJobsBtn" class="refresh-btn-small" title="Refresh all markets, then dismiss failed jobs">🧹 All Failed</button>
+                <button id="copyAllLogsBtn" class="refresh-btn-small" title="Copy all debug logs to clipboard">📋</button>
+                <button id="refreshAutoJobsBtn" class="refresh-btn-small" title="Refresh job data">🔄</button>
+            </div>
+        </div>
+        <div id="failedJobsCleanupStatus" style="display:none;font-size:10px;color:var(--text-dim);margin:4px 0;" aria-live="polite"></div>
+        <!-- Market Tabs -->
+        <div class="auto-jobs-tabs">
+            <button class="auto-jobs-tab active" data-market="home" id="autoJobsTabHome">🏠 HOME</button>
+            <button class="auto-jobs-tab" data-market="dark" id="autoJobsTabDark">🌑 D4RK</button>
+            <button class="auto-jobs-tab" data-market="soyuz" id="autoJobsTabSoyuz"><span style="color:#c33b3b;">☭</span> SOYUZ</button>
+            <button class="auto-jobs-tab" data-market="usol" id="autoJobsTabUsol"><span style="color:#2592A7;">☮</span> USOL</button>
+        </div>
+        <!-- HOME market jobs -->
+        <div class="auto-jobs-tab-content active" id="autoJobsContentHome">
+            <div class="auto-jobs-no-jobs">Loading job data...</div>
+        </div>
+        <!-- D4RK market jobs -->
+        <div class="auto-jobs-tab-content" id="autoJobsContentDark">
+            <div class="auto-jobs-no-jobs">Loading job data...</div>
+        </div>
+        <!-- SOYUZ market jobs -->
+        <div class="auto-jobs-tab-content" id="autoJobsContentSoyuz">
+            <div class="auto-jobs-no-jobs">Loading job data...</div>
+        </div>
+        <!-- USOL market jobs -->
+        <div class="auto-jobs-tab-content" id="autoJobsContentUsol">
+            <div class="auto-jobs-no-jobs">Loading job data...</div>
+        </div>
+        <label for="autoJobLoadoutMode" style="display:block;font-size:10px;margin-top:8px;">Auto Job Loadout</label>
+        <select id="autoJobLoadoutMode" class="loadout-sort-select" style="width:100%;margin:4px 0;">
+            <option value="auto">Software + hardware — highest actual Power</option>
+            <option value="software">Software only — keep current hardware</option>
+        </select>
+        <div id="autoJobLoadoutModeHint" style="font-size:9px;color:var(--text-dim);margin-bottom:8px;"></div>
+        <!-- Start/Stop Button -->
+        <button class="auto-jobs-btn-start start" id="autoJobsStartBtn">▶ Start Auto Jobs</button>
+        <!-- Auto Finish All Jobs Toggle -->
+        <div class="auto-decrypt-row" style="margin-top:8px;">
+            <span class="decrypt-label" style="font-size:10px;">🔄 Auto Finish All Jobs</span>
+            <label class="alarm-toggle-switch">
+                <input type="checkbox" id="autoFinishAllJobsToggle">
+                <span class="slider-track"></span>
+            </label>
+        </div>
+        <!-- Debug Console Toggle -->
+        <div class="auto-decrypt-row" style="margin-top:4px;">
+            <span class="decrypt-label" style="font-size:10px;">🖥️ Debug Console</span>
+            <label class="alarm-toggle-switch">
+                <input type="checkbox" id="autoJobsDebugToggle">
+                <span class="slider-track"></span>
+            </label>
+        </div>
+        <!-- Debug Console -->
+        <div class="debug-console" id="autoJobsDebugConsole" style="display:none;">
+            <div class="debug-console-tabs">
+                <button class="debug-console-tab active" data-tab="jobs" id="debugTabJobs">Jobs</button>
+                <button class="debug-console-tab" data-tab="logs" id="debugTabLogs">Logs</button>
+            </div>
+            <div class="debug-console-body active" id="debugJobsBody">
+                <div style="color:var(--text-dim);">No job data yet.</div>
+            </div>
+            <div class="debug-console-body" id="debugLogsBody">
+                <div style="color:var(--text-dim);">No logs yet.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auto Valuable Seller Section -->
+    <div class="valuable-section" id="autoValuableSellerSection" style="display:none;">
+        <div class="section-title">
+            <span>💎 Auto Valuable Seller</span>
+        </div>
+        <!-- Tabs -->
+        <div class="valuable-tabs">
+            <button class="valuable-tab active" data-vtab="servers" id="valuableTabServers">
+                <span>📡</span>
+                <span>Servers</span>
+            </button>
+            <button class="valuable-tab" data-vtab="downloads" id="valuableTabDownloads">
+                <span>📁</span>
+                <span>Downloads</span>
+            </button>
+            <button class="valuable-tab" data-vtab="maintenance" id="valuableTabMaintenance">
+                <span>🔧</span>
+                <span>Maintenance</span>
+            </button>
+        </div>
+        <!-- Servers With Valuables -->
+        <div class="valuable-tab-content active" id="valuableContentServers">
+            <div class="auto-jobs-no-jobs">No valuable data yet. Click "Start Valuable Search" to scan servers.</div>
+        </div>
+        <!-- Downloads Folder -->
+        <div class="valuable-tab-content" id="valuableContentDownloads">
+            <div class="auto-jobs-no-jobs">No download data yet. Click "Start Valuable Search" to scan.</div>
+        </div>
+        <!-- Maintenance Tracker -->
+        <div class="valuable-tab-content" id="valuableContentMaintenance">
+            <div class="auto-jobs-no-jobs">Run "Start Valuable Search" to see the maintenance status of servers. If no servers are shown after the search, there is no upcoming or active maintenance.</div>
+        </div>
+        <!-- Start Valuable Seller Button -->
+        <button class="valuable-btn start" id="valuableSellerBtn">▶ Start Valuable Seller</button>
+        <!-- Start Valuable Search Button -->
+        <button class="valuable-btn start" id="valuableSearchBtn">▶ Start Valuable Search</button>
+        <!-- Debug Console Toggle -->
+        <div class="auto-decrypt-row" style="margin-top:8px;">
+            <span class="decrypt-label" style="font-size:10px;">🖥️ Debug Console</span>
+            <label class="alarm-toggle-switch">
+                <input type="checkbox" id="valuableDebugToggle">
+                <span class="slider-track"></span>
+            </label>
+        </div>
+        <!-- Debug Console -->
+        <div class="debug-console" id="valuableDebugConsole" style="display:none;">
+            <div class="debug-console-tabs">
+                <button class="debug-console-tab active" data-tab="vlogs" id="valuableDebugTabLogs">Logs</button>
+            </div>
+            <div class="debug-console-body active" id="valuableDebugLogsBody">
+                <div style="color:var(--text-dim);">No logs yet.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Markets -->
+    <div class="section" id="marketsSection">
+        <button type="button" class="section-title group-collapse-toggle" id="marketsGroupToggle" aria-expanded="true" title="Collapse Markets">
+            <span class="group-collapse-arrow" aria-hidden="true">▼</span><span>🏪 Markets</span>
+        </button>
+        <div class="sub-section" id="coreMarketSection" data-section-group-content="markets">
+            <div class="market-sub-header">
+                <span class="market-sub-label" id="coreMarketLabel">Market-1</span>
+                <div style="display:flex;gap:4px;">
+                    <button id="cleanupCoreMarketBtn" class="refresh-btn-small" title="Clear failed jobs - this button will disappear once cleanup is complete" style="display:none;">🧹</button>
+                    <button id="refreshMarketBtn" class="refresh-btn-small" title="Refresh Market">🔄</button>
+                    <button id="pinCoreMarketBtn" class="refresh-btn-small pin-btn" title="Pin Market Timer">📌</button>
+                </div>
+            </div>
+            <div class="last-updated" id="coreMarketLastUpdated"></div>
+            <div id="marketContainer"><div class="no-decisions">No market data cached yet.</div></div>
+        </div>
+        <div class="sub-section" id="darkMarketSection" data-section-group-content="markets">
+            <div class="market-sub-header">
+                <span class="market-sub-label" id="darkMarketLabel">Market-2</span>
+                <div style="display:flex;gap:4px;">
+                    <button id="cleanupDarkMarketBtn" class="refresh-btn-small" title="Clear failed jobs - this button will disappear once cleanup is complete" style="display:none;">🧹</button>
+                    <button id="refreshDarkMarketBtn" class="refresh-btn-small" title="Refresh Market">🔄</button>
+                    <button id="pinDarkMarketBtn" class="refresh-btn-small pin-btn" title="Pin Market Timer">📌</button>
+                </div>
+            </div>
+            <div class="last-updated" id="darkMarketLastUpdated"></div>
+            <div id="darkMarketContainer"><div class="no-decisions">No market data cached yet.</div></div>
+        </div>
+        <div class="sub-section" id="soyuzMarketSection" data-section-group-content="markets">
+            <div class="market-sub-header">
+                <span class="market-sub-label" id="soyuzMarketLabel">Market-3</span>
+                <div style="display:flex;gap:4px;">
+                    <button id="cleanupSoyuzMarketBtn" class="refresh-btn-small" title="Clear failed jobs - this button will disappear once cleanup is complete" style="display:none;">🧹</button>
+                    <button id="refreshSoyuzMarketBtn" class="refresh-btn-small" title="Refresh Market">🔄</button>
+                    <button id="pinSoyuzMarketBtn" class="refresh-btn-small pin-btn" title="Pin Market Timer">📌</button>
+                </div>
+            </div>
+            <div class="last-updated" id="soyuzMarketLastUpdated"></div>
+            <div id="soyuzMarketContainer"><div class="no-decisions">No market data cached yet.</div></div>
+        </div>
+        <div class="sub-section" id="usolMarketSection" data-section-group-content="markets">
+            <div class="market-sub-header">
+                <span class="market-sub-label" id="usolMarketLabel">Market-4</span>
+                <div style="display:flex;gap:4px;">
+                    <button id="cleanupUsolMarketBtn" class="refresh-btn-small" title="Clear failed jobs - this button will disappear once cleanup is complete" style="display:none;">🧹</button>
+                    <button id="refreshUsolMarketBtn" class="refresh-btn-small" title="Refresh Market">🔄</button>
+                    <button id="pinUsolMarketBtn" class="refresh-btn-small pin-btn" title="Pin Market Timer">📌</button>
+                </div>
+            </div>
+            <div class="last-updated" id="usolMarketLastUpdated"></div>
+            <div id="usolMarketContainer"><div class="no-decisions">No market data cached yet.</div></div>
+        </div>
+        <!-- Daily Ops -->
+        <div class="sub-section daily-ops-section" id="dailyOpsSection" data-section-group-content="markets">
+            <div class="section-header-row">
+                <button type="button" class="section-title group-collapse-toggle" id="dailyGroupToggle" aria-expanded="true" title="Collapse Daily Ops">
+                    <span class="group-collapse-arrow" aria-hidden="true">▼</span><span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-sentry-element="Icon" data-sentry-component="getTabBarIcon" data-sentry-source-file="get-tab-bar-icon.tsx" style="vertical-align: -3px;">
+                        <path d="M7.20996 0.991211C7.70113 0.711205 8.30375 0.711205 8.79492 0.991211L8.93457 1.07031V2.81445C8.93454 3.13267 8.80803 3.43807 8.58301 3.66309L8.1875 4.05859C7.81243 4.43367 7.60156 4.9432 7.60156 5.47363V6.32617C6.83729 6.50688 6.26758 7.19125 6.26758 8.01074C6.26775 8.96778 7.04394 9.74397 8.00098 9.74414C8.95816 9.74414 9.7342 8.96789 9.73438 8.01074C9.73438 7.19136 9.16548 6.50699 8.40137 6.32617V5.47363C8.40137 5.15542 8.52795 4.85003 8.75293 4.625L9.14844 4.22852C9.52348 3.85347 9.73435 3.34485 9.73438 2.81445V1.52637L11.6016 2.59082V3.6543C10.8373 3.835 10.2676 4.51937 10.2676 5.33887C10.2678 6.2959 11.0439 7.07209 12.001 7.07227C12.9582 7.07227 13.7342 6.29601 13.7344 5.33887C13.7344 4.51948 13.1655 3.83512 12.4014 3.6543V3.0459L13.8613 3.87891C14.3606 4.16356 14.6689 4.69478 14.6689 5.26953V10.7402C14.6689 11.3148 14.3614 11.8462 13.8623 12.1309L12.4033 12.9619V11.5391C12.869 11.3741 13.2031 10.9314 13.2031 10.4092C13.203 9.74653 12.6656 9.20898 12.0029 9.20898C11.3403 9.20909 10.8028 9.74659 10.8027 10.4092C10.8027 10.9316 11.1376 11.3742 11.6035 11.5391V13.418L8.79492 15.0205C8.6704 15.0915 8.53852 15.1437 8.40332 15.1787V13.6641C8.86897 13.4991 9.20312 13.0564 9.20312 12.5342C9.20302 11.8715 8.66561 11.334 8.00293 11.334C7.34034 11.3341 6.80284 11.8716 6.80273 12.5342C6.80273 13.0566 7.13759 13.4992 7.60352 13.6641V15.1787C7.46769 15.1437 7.33503 15.0918 7.20996 15.0205L4.40137 13.418V11.8223C5.16548 11.6414 5.73438 10.9571 5.73438 10.1377C5.7342 9.18055 4.95816 8.4043 4.00098 8.4043C3.04394 8.40447 2.26775 9.18066 2.26758 10.1377C2.26758 10.9572 2.83729 11.6416 3.60156 11.8223V12.9619L2.14355 12.1309C1.6444 11.8462 1.33594 11.3149 1.33594 10.7402V5.26953C1.33594 4.69478 1.64424 4.16356 2.14355 3.87891L3.60352 3.0459V4.47656C3.13759 4.64138 2.80273 5.08407 2.80273 5.60645C2.80284 6.26903 3.34034 6.80654 4.00293 6.80664C4.66561 6.80664 5.20302 6.2691 5.20312 5.60645C5.20312 5.08426 4.86897 4.64153 4.40332 4.47656V2.67285H4.25977L7.20996 0.991211ZM4.00098 9.20508C4.51633 9.20508 4.93439 9.62238 4.93457 10.1377C4.93457 10.6532 4.51644 11.0713 4.00098 11.0713C3.48566 11.0711 3.06836 10.6531 3.06836 10.1377C3.06854 9.62249 3.48577 9.20525 4.00098 9.20508ZM8.00098 7.07715C8.51644 7.07715 8.93457 7.49528 8.93457 8.01074C8.93439 8.52606 8.51633 8.94336 8.00098 8.94336C7.48577 8.94318 7.06854 8.52595 7.06836 8.01074C7.06836 7.49539 7.48566 7.07732 8.00098 7.07715ZM12.001 4.40527C12.5164 4.40527 12.9346 4.8234 12.9346 5.33887C12.9344 5.85418 12.5163 6.27148 12.001 6.27148C11.4858 6.27131 11.0685 5.85407 11.0684 5.33887C11.0684 4.82351 11.4857 4.40545 12.001 4.40527Z" fill="rgba(118, 193, 209, 1)"></path>
+                    </svg>
+                    <span> Daily Ops</span>
+                </span>
+                </button>
+                <div style="display:flex;gap:4px;">
+                    <button id="refreshDailyBtn" class="refresh-btn-small" title="Refresh Daily Ops">🔄</button>
+                    <button id="pinDailyBtn" class="refresh-btn-small pin-btn" title="Pin Daily Ops">📌</button>
+                </div>
+            </div>
+            <div id="dailyGroupBody" data-section-group-content="daily">
+            <div class="last-updated" id="dailyLastUpdated"></div>
+            <div style="font-size:11px;color:var(--accent-orange);margin-bottom:4px;" id="dailyTimerLine">⏳ Next Task: --:--:--</div>
+            <div style="font-size:10px;margin-bottom:4px;display:none;" id="dailyStatusLine"></div>
+            <div style="font-size:10px;color:var(--text-dim);margin-bottom:4px;">Claimed: <span id="dailyClaimed">--</span> · Streak: <span id="dailyStreak">--</span> · Difficulty: <span id="dailyDifficulty">--</span> · Bonus: <span id="dailyStreakBonus">--</span></div>
+            </div>
+        </div>
+
+        <div class="loadout-hw-info-overlay" id="marketInfoOverlay" data-section-group-content="markets"></div>
+        <div class="loadout-hw-info-popup" id="marketInfoPopup" data-section-group-content="markets"></div>
+    </div>
+
+    <!-- Unified Chinese Expedition module: one card in every layout -->
+    <div class="section exp-module" id="expeditionsSection" lang="zh-CN">
+        <div class="exp-module-header">
+            <button type="button" class="section-title group-collapse-toggle" id="expeditionsGroupToggle" aria-expanded="true" title="收起远征"><span class="group-collapse-arrow" aria-hidden="true">▼</span><span>🛶 远征</span></button>
+            <label class="exp-master-label" for="expeditionModuleToggle">总开关</label>
+            <label class="alarm-toggle-switch"><input type="checkbox" id="expeditionModuleToggle" aria-label="远征总开关"><span class="slider-track"></span></label>
+        </div>
+        <div id="expeditionSummary" class="exp-summary" aria-live="polite">远征模块已暂停</div>
+        <div id="expeditionNextCheck" class="exp-hint"></div>
+        <div id="expeditionActionStatus" class="exp-action-status" aria-live="polite"></div>
+        <div id="expeditionGroupBody" data-section-group-content="expeditions">
+            <details class="exp-panel" id="activeExpeditionSection" open>
+                <summary id="activeExpeditionSectionToggle">🛶 当前远征<button type="button" id="refreshExpeditionBtn" class="refresh-btn-small" title="刷新远征信息" data-exp-action>🔄</button></summary>
+                <div class="exp-panel-body">
+                    <div id="expeditionLastUpdated" class="exp-hint"></div>
+                    <div id="expeditionInfoContainer" class="exp-dynamic"><div class="no-decisions">尚无缓存，请启用远征模块。</div></div>
+                    <details class="exp-panel exp-nested" id="decisionsSection">
+                        <summary id="decisionsSectionToggle">📋 决策<span id="decisionsCount" class="exp-mode-badge"></span></summary>
+                        <div class="exp-panel-body" id="decisionsSectionBody">
+                            <div class="exp-setting"><div class="exp-setting-row"><label for="autoChooseCheckbox">自动选择决策</label><label class="alarm-toggle-switch"><input type="checkbox" id="autoChooseCheckbox"><span class="slider-track"></span></label></div></div><div class="exp-setting"><div class="exp-setting-row"><label for="noWaitAutoChooseCheckbox">立即自动选择，不等待截止</label><label class="alarm-toggle-switch"><input type="checkbox" id="noWaitAutoChooseCheckbox"><span class="slider-track"></span></label></div></div><div class="exp-setting"><div class="exp-setting-row"><label for="modifiersEnabledToggle">启用自定义评分权重</label><label class="alarm-toggle-switch"><input type="checkbox" id="modifiersEnabledToggle"><span class="slider-track"></span></label></div></div><div class="exp-setting"><div class="exp-setting-row"><label for="getRidOfVeteransToggle">启用老兵特殊策略</label><label class="alarm-toggle-switch"><input type="checkbox" id="getRidOfVeteransToggle"><span class="slider-track"></span></label></div></div>
+                            <div class="exp-weight-row"><label for="lootModifier">收益权重 <input type="number" id="lootModifier" value="1" step="1"></label><label for="riskModifier">风险权重 <input type="number" id="riskModifier" value="-5" step="1"></label><button type="button" class="refresh-btn-small" id="saveDecisionModifiersBtn">保存</button></div>
+                            <div class="exp-hint">按收益与风险加权评分选择；未启用“立即”时，在决策截止前 60 秒内提交。老兵特殊策略沿用原版：收益权重 1、风险权重 10。</div>
+                            <div id="decisionsContainer" class="exp-dynamic"></div>
+                        </div>
+                    </details>
+                    <div class="exp-setting"><div class="exp-setting-row"><label for="mercDebugToggle">🖥️ 调试日志</label><label class="alarm-toggle-switch"><input type="checkbox" id="mercDebugToggle"><span class="slider-track"></span></label></div></div>
+                    <div class="debug-console" id="mercDebugConsole">
+                        <div class="debug-console-tabs"><span class="debug-console-tab active">日志</span><button type="button" id="copyMercLogsBtn" class="refresh-btn-small" title="复制远征日志">📋 复制</button></div>
+                        <div class="debug-console-body active" id="mercDebugLogsBody" aria-live="polite"></div>
+                    </div>
+                    <div class="exp-hint">保留最近 200 条 · 本地时间 · 收起界面后继续记录</div>
+                </div>
+            </details>
+            <details class="exp-panel" id="personalDroneSection">
+                <summary id="personalDroneSectionToggle">🛠️ 个人无人机组装</summary>
+                <div class="exp-panel-body" id="personalDroneSectionBody"><div class="exp-hint">原版尚未实现直接组装操作。这里显示仓库中的无人机材料；实际阶段交付仍在游戏内进行。</div><div id="personalDroneContainer"></div></div>
+            </details>
+            <details class="exp-panel" id="mercenariesSection" open>
+                <summary id="mercenariesSectionToggle">⚔️ 佣兵<button type="button" id="refreshMercenariesBtn" class="refresh-btn-small" title="刷新佣兵与费用" data-exp-action>🔄</button></summary>
+                <div class="exp-panel-body" id="mercenariesSectionBody">
+                    <div class="exp-weight-row"><label for="maxMercCostInput">最高费用（CR）<input type="number" id="maxMercCostInput" min="0" max="99999999" value="15000"></label><button type="button" class="refresh-btn-small" id="saveMercCostBtn">保存</button></div>
+                    <div class="exp-setting"><div class="exp-setting-row"><label for="autoSendMercenaryToggle">远征结束后自动派遣</label><label class="alarm-toggle-switch"><input type="checkbox" id="autoSendMercenaryToggle"><span class="slider-track"></span></label></div><div class="exp-hint">结束时触发统一检查；遵守当前费用上限和佣兵筛选。</div></div><div class="exp-setting"><div class="exp-setting-row"><label for="periodicMercDispatchToggle">每 30 分钟检查并派遣</label><label class="alarm-toggle-switch"><input type="checkbox" id="periodicMercDispatchToggle"><span class="slider-track"></span></label></div><div class="exp-hint">开启时立即检查一次；此后每 30 分钟检查可用佣兵。</div></div><div class="exp-setting"><div class="exp-setting-row"><label for="applyMercCostLimiterToggle">启用佣兵费用上限</label><label class="alarm-toggle-switch"><input type="checkbox" id="applyMercCostLimiterToggle"><span class="slider-track"></span></label></div></div><div class="exp-setting"><div class="exp-setting-row"><label for="autoChooseMercToggle">自动选择最便宜的可用佣兵</label><label class="alarm-toggle-switch"><input type="checkbox" id="autoChooseMercToggle"><span class="slider-track"></span></label></div></div><div class="exp-setting"><div class="exp-setting-row"><label for="autoChooseUsolFirstToggle">优先选择 USOL 佣兵</label><label class="alarm-toggle-switch"><input type="checkbox" id="autoChooseUsolFirstToggle"><span class="slider-track"></span></label></div></div><div class="exp-setting"><div class="exp-setting-row"><label for="ignoreEliteMercToggle">排除精英佣兵</label><label class="alarm-toggle-switch"><input type="checkbox" id="ignoreEliteMercToggle"><span class="slider-track"></span></label></div></div><div class="exp-setting"><div class="exp-setting-row"><label for="autoClaimExpeditionMailToggle">自动领取远征奖励邮件</label><label class="alarm-toggle-switch"><input type="checkbox" id="autoClaimExpeditionMailToggle"><span class="slider-track"></span></label></div><div class="exp-hint">游戏在线时每分钟检查，仅领取识别到的远征奖励邮件。</div></div>
+                    <div id="periodicMercDispatchStatus" class="exp-hint"></div>
+                    <div id="periodicMercDispatchSchedule" class="exp-hint"></div>
+                    <div id="expeditionMailStatus" class="exp-hint"></div>
+                    <div class="exp-actions"><button type="button" id="checkExpeditionMailBtn" class="refresh-btn-small" data-exp-action>立即检查邮件</button><button type="button" id="expeditionCheckNowBtn" class="refresh-btn-small" data-exp-action>立即检查并派遣</button></div>
+                    <div class="exp-hint">两种自动派遣共用同一流程。正在执行或已有远征时，不会重复派遣。立即检查按钮按已启用的派遣开关运行。</div>
+                    <div class="exp-hint">已选择：<strong id="selectedMercenaryName">未选择</strong></div>
+                    <div id="mercenariesContainer" class="exp-dynamic"></div>
+                </div>
+            </details>
+            <details class="exp-panel" id="expeditionSellingSection" open>
+                <summary id="expeditionSellingToggle">💰 掉落出售<span id="expeditionSaleModeBadge" class="exp-mode-badge">关闭</span></summary>
+                <div class="exp-panel-body" id="expeditionSellingBody">
+                    <div class="exp-hint">四种模式互斥，始终只有一项开启。</div>
+                    <div class="exp-sale-choice"><div class="exp-setting"><div class="exp-setting-row"><label for="expSale_off">关闭</label><label class="alarm-toggle-switch"><input type="checkbox" id="expSale_off"><span class="slider-track"></span></label></div><div class="exp-hint">不自动出售。</div></div></div><div class="exp-sale-choice"><div class="exp-setting"><div class="exp-setting-row"><label for="expSale_full">仓库满出售</label><label class="alarm-toggle-switch"><input type="checkbox" id="expSale_full"><span class="slider-track"></span></label></div><div class="exp-hint">空间不足时出售最便宜的非无人机远征掉落，腾够空间即停止。</div></div></div><div class="exp-sale-choice"><div class="exp-setting"><div class="exp-setting-row"><label for="expSale_non-drone">出售非无人机</label><label class="alarm-toggle-switch"><input type="checkbox" id="expSale_non-drone"><span class="slider-track"></span></label></div><div class="exp-hint">自动出售所有可售的非无人机远征掉落，保留全部无人机材料。</div></div></div><div class="exp-sale-choice"><div class="exp-setting"><div class="exp-setting-row"><label for="expSale_all">全出售</label><label class="alarm-toggle-switch"><input type="checkbox" id="expSale_all"><span class="slider-track"></span></label></div><div class="exp-hint">自动出售全部可售远征掉落，包括无人机材料。</div></div></div>
+                    <div id="expeditionSaleStatus" class="exp-hint" aria-live="polite"></div>
+                    <div class="exp-hint">自动出售仅匹配远征掉落清单中的物品类型，包含已有库存和后续掉落。同类物品的购买来源无法单独区分；未知、不可出售、锁定及固定物品会跳过。</div>
+                    <details class="exp-material-details"><summary>查看无人机材料保护清单（22 类）</summary><ul id="droneMaterialsKeepList"></ul></details>
+                </div>
+            </details>
+            <details class="exp-panel" id="inventorySection">
+                <summary id="inventorySectionToggle">🎒 仓库<span id="spaceInfo" class="exp-mode-badge">-- / --</span><button type="button" id="refreshInventoryBtn" class="refresh-btn-small" title="刷新仓库" data-exp-action>🔄</button></summary>
+                <div class="exp-panel-body" id="inventorySectionBody"><div id="totalValue" class="exp-hint"></div><div id="specialistTimerInfo"></div><div id="inventoryContainer" class="exp-dynamic"></div></div>
+            </details>
+            <details class="exp-panel" id="archivedExpSection">
+                <summary id="archivedExpSectionToggle">📦 历史远征<button type="button" id="refreshArchivedBtn" class="refresh-btn-small" title="刷新历史远征" data-exp-action>🔄</button></summary>
+                <div class="exp-panel-body" id="archivedExpSectionBody"><div id="archivedExpContainer" class="exp-dynamic"></div></div>
+            </details>
+        </div>
+    </div>
+
+    <!-- Loadout Section -->
+    <div class="section" id="loadoutSection">
+        <div class="section-header-row">
+            <button type="button" class="section-title group-collapse-toggle" id="loadoutGroupToggle" aria-expanded="true" title="Collapse Loadout">
+                <span class="group-collapse-arrow" aria-hidden="true">▼</span><span>🖥️ Loadout</span>
+            </button>
+            <button id="refreshLoadoutBtn" class="refresh-btn-small" title="Refresh Loadout">🔄</button>
+        </div>
+        <div class="last-updated" id="loadoutLastUpdated" data-section-group-content="loadout"></div>
+        <div id="loadoutError" data-section-group-content="loadout" class="loadout-error" style="display:none;"></div>
+
+        <!-- Hardwares -->
+        <div class="market-sub-header" id="loadoutHwHeader" data-section-group-content="loadout">
+            <div class="expandable-header" id="loadoutHwToggle" style="flex:1;">
+                <span class="expand-arrow-sub">▶</span>
+                <span class="market-sub-label">⚙️ Hardwares</span>
+            </div>
+        </div>
+        <div class="expandable-body" id="loadoutHwBody" data-section-group-content="loadout">
+            <div id="loadoutHwContainer"><div class="no-decisions">No loadout data yet</div></div>
+            <div class="loadout-hw-info-overlay" id="hwInfoOverlay"></div>
+            <div class="loadout-hw-info-popup" id="hwInfoPopup"></div>
+        </div>
+
+        <!-- Softwares -->
+        <div class="market-sub-header" id="loadoutSwHeader" data-section-group-content="loadout">
+            <div class="expandable-header" id="loadoutSwToggle" style="flex:1;">
+                <span class="expand-arrow-sub">▶</span>
+                <span class="market-sub-label">💾 Softwares <span id="loadoutSwCount" style="font-size:9px;color:var(--text-muted);"></span></span>
+            </div>
+        </div>
+        <div class="expandable-body" id="loadoutSwBody" data-section-group-content="loadout">
+            <div style="display:flex;align-items:center;gap:6px;">
+                <select id="loadoutSwSort" class="loadout-sort-select">
+                    <option value="all">All</option>
+                    <option value="hack">Hack</option>
+                    <option value="decrypt">Decrypt</option>
+                    <option value="search">Search</option>
+                    <option value="view">View</option>
+                    <option value="load">Load</option>
+                </select>
+            </div>
+            <input type="text" id="loadoutSwSearch" class="loadout-search-input" placeholder="Search..." style="margin-bottom:6px;">
+            <div id="loadoutSwContainer"><div class="no-decisions">No loadout data yet</div></div>
+        </div>
+
+        <!-- System Overview -->
+        <div class="market-sub-header" id="loadoutOverviewHeader" data-section-group-content="loadout">
+            <div class="expandable-header" id="loadoutOverviewToggle" style="flex:1;">
+                <span class="expand-arrow-sub">▶</span>
+                <span class="market-sub-label">📊 System Overview</span>
+            </div>
+        </div>
+        <div class="expandable-body" id="loadoutOverviewBody" data-section-group-content="loadout">
+            <div id="loadoutOverviewContainer"><div class="no-decisions">No loadout data yet</div></div>
+        </div>
+    </div>
+
+    <!-- Toggles -->
+    <div class="toggles-section" id="automationSection">
+        <button type="button" class="section-title group-collapse-toggle" id="automationGroupToggle" aria-expanded="true" title="Collapse Automation/QoL Toggles">
+            <span class="group-collapse-arrow" aria-hidden="true">▼</span><span>֎ Automation/QoL Toggles</span>
+        </button>
+        <div id="automationGroupBody" data-section-group-content="automation">
+        <!-- Hack Automation Toggles -->
+        <div class="auto-decrypt-title">
+            <span>Hack Automation Toggles</span>
+        </div>
+        <!-- Auto Decrypt Hacking -->
+        <div class="auto-decrypt-row">
+            <div style="display:flex;gap:6px;">
+                <span class="decrypt-label" style="margin-bottom: 2px;">&#x1F513;</span>
+                <span class="decrypt-label">Auto Decrypt Hacking</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <span class="decrypt-status" id="decryptStatus">Off</span>
+                <label class="alarm-toggle-switch">
+                    <input type="checkbox" id="autoDecryptToggle">
+                    <span class="slider-track"></span>
+                </label>
+            </div>
+        </div>
+        <div id="dailyHackInfo" style="display:none;font-size:10px;color:var(--accent-cyan);margin-top:6px;"></div>
+        <!-- Auto ICE Wall Hacking -->
+        <div class="auto-decrypt-row" style="margin-top:8px;">
+            <div style="display:flex;gap:6px;">
+                <span class="decrypt-label" style="margin-bottom: 2px;">&#x1F513;</span>
+                <span class="decrypt-label">Auto ICE Wall Hacking</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <span class="decrypt-status" id="iceWallStatus">Off</span>
+                <label class="alarm-toggle-switch">
+                    <input type="checkbox" id="autoIceWallToggle">
+                    <span class="slider-track"></span>
+                </label>
+            </div>
+        </div>
+        <div id="iceWallSolverStatusLine" style="display:none;font-size:10px;margin-top:6px;padding:6px 8px;background:var(--bg-card);border-radius:6px;border:1px solid var(--border);color:var(--accent-cyan);"></div>
+        <!-- Show More / Show Less -->
+        <div id="togglesExtra" style="display:none;">
+            <!-- Auto Simple Decrypt Hacking -->
+            <div class="auto-decrypt-row" style="margin-top:8px;">
+                <div style="display:flex;gap:6px;">
+                    <span class="decrypt-label" style="margin-bottom: 2px;">&#x1F513;</span>
+                    <span class="decrypt-label">Auto Simple Decrypt Hacking</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="decrypt-status" id="simpleDecryptStatus">Off</span>
+                    <label class="alarm-toggle-switch">
+                        <input type="checkbox" id="autoSimpleDecryptToggle">
+                        <span class="slider-track"></span>
+                    </label>
+                </div>
+            </div>
+            <div id="simpleDecryptSolverStatusLine" style="display:none;font-size:10px;margin-top:6px;padding:6px 8px;background:var(--bg-card);border-radius:6px;border:1px solid var(--border);color:var(--accent-cyan);"></div>
+            <!-- Auto Daily Hacking -->
+            <div class="auto-decrypt-row" style="margin-top:8px;">
+                <div style="display:flex;gap:6px;">
+                    <span class="decrypt-label" style="margin-bottom: 2px;">&#x1F513;</span>
+                    <span class="decrypt-label">Auto Daily Hacking</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="decrypt-status" id="dailyHackStatus">Off</span>
+                    <label class="alarm-toggle-switch">
+                        <input type="checkbox" id="autoDailyHackToggle">
+                        <span class="slider-track"></span>
+                    </label>
+                </div>
+            </div>
+            <div id="dailyHackLog" style="display:none;font-size:10px;margin-top:6px;margin-bottom:6px;padding:6px 8px;background:var(--bg-card);border-radius:6px;border:1px solid var(--border);color:var(--accent-cyan);"></div>
+            <!-- QoL Toggles -->
+            <div class="auto-decrypt-title">
+                <span>Objective Automation Toggles</span>
+            </div>
+            <!-- Auto Job Solver Toggle -->
+            <div class="auto-decrypt-row" style="margin-top:8px;">
+                <span class="decrypt-label">🤖 Auto Job Solver UI</span>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="decrypt-status" id="autoJobSolverStatus">Off</span>
+                    <label class="alarm-toggle-switch">
+                        <input type="checkbox" id="autoJobSolverToggle">
+                        <span class="slider-track"></span>
+                    </label>
+                </div>
+            </div>
+            <!-- Auto Valuable Seller Toggle -->
+            <div class="auto-decrypt-row" style="margin-top:8px;">
+                <span class="decrypt-label">💎 Auto Valuable Seller UI</span>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="decrypt-status" id="autoValuableSellerStatus">Off</span>
+                    <label class="alarm-toggle-switch">
+                        <input type="checkbox" id="autoValuableSellerToggle">
+                        <span class="slider-track"></span>
+                    </label>
+                </div>
+            </div>
+            <!-- Auto Update Markets -->
+            <div class="auto-decrypt-row" style="margin-top:8px;">
+                <div style="display:flex;gap:4px;">
+                    <span class="decrypt-label" style="margin-bottom: 2px;">📊</span>
+                    <span class="decrypt-label">Auto Update Markets</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="decrypt-status" id="autoUpdateMarketsStatus">Off</span>
+                    <label class="alarm-toggle-switch">
+                        <input type="checkbox" id="autoUpdateMarketsToggle">
+                        <span class="slider-track"></span>
+                    </label>
+                </div>
+            </div>
+            <!-- Secret Connection/Server Finder -->
+            <div class="auto-decrypt-row" style="margin-top:8px;">
+                <span class="decrypt-label">🔍 Secret Link/Server Finder</span>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="decrypt-status" id="secretFinderStatus">Off</span>
+                    <label class="alarm-toggle-switch">
+                        <input type="checkbox" id="secretFinderToggle">
+                        <span class="slider-track"></span>
+                    </label>
+                </div>
+            </div>
+            <div id="secretFinderLog" style="display:none;font-size:10px;margin-top:6px;margin-bottom:6px;padding:6px 8px;background:var(--bg-card);border-radius:6px;border:1px solid var(--border);color:var(--accent-cyan);max-height:120px;overflow-y:auto;"></div>
+            <!-- QoL Toggles -->
+            <div class="auto-decrypt-title">
+                <span>QoL Toggles</span>
+            </div>
+            <!-- Background Elements Toggle -->
+            <div class="auto-decrypt-row" style="margin-top:8px;">
+                <span class="decrypt-label">🎨 Disable Desktop Glitch/Wave</span>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="decrypt-status" id="backgroundStatus">Off</span>
+                    <label class="alarm-toggle-switch">
+                        <input type="checkbox" id="disableBackgroundToggle">
+                        <span class="slider-track"></span>
+                    </label>
+                </div>
+            </div>
+            <!-- Network Fog Toggle -->
+            <div class="auto-decrypt-row" style="margin-top:8px;">
+                <span class="decrypt-label">🎨 Disable Network Fog</span>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="decrypt-status" id="networkFogStatus">Off</span>
+                    <label class="alarm-toggle-switch">
+                        <input type="checkbox" id="disableNetworkFogToggle">
+                        <span class="slider-track"></span>
+                    </label>
+                </div>
+            </div>
+            <!-- Move Notifications to Left -->
+            <div class="auto-decrypt-row" style="margin-top:8px;">
+                <span class="decrypt-label">📌 Move Notifications To Left</span>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <span class="decrypt-status" id="moveNotificationsStatus">Off</span>
+                    <label class="alarm-toggle-switch">
+                        <input type="checkbox" id="moveNotificationsToggle">
+                        <span class="slider-track"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:8px;">
+            <button id="togglesShowMoreBtn" style="background:none;border:1px solid var(--border);color:var(--text-secondary);font-size:10px;padding:3px 12px;border-radius:6px;cursor:pointer;">Show More ▼</button>
+        </div>
+        </div>
+    </div>
+
+
+    <!-- Dev TCs Section (hidden by default) -->
+    <div id="devTcsSection" class="section" style="display:none;">
+        <div class="alarm-section-title">
+            <span>🧪 Dev TCs</span>
+        </div>
+        <div class="auto-decrypt-title"><span>Toggles</span></div>
+        <div class="auto-decrypt-row" id="devTcToggle1Row">
+            <span class="decrypt-label">🔧 TC Toggle 1 (placeholder)</span>
+            <label class="alarm-toggle-switch">
+                <input type="checkbox" id="devTcToggle1" disabled>
+                <span class="slider-track"></span>
+            </label>
+        </div>
+        <div class="auto-decrypt-row" id="devTcToggle2Row">
+            <span class="decrypt-label">🔧 TC Toggle 2 (placeholder)</span>
+            <label class="alarm-toggle-switch">
+                <input type="checkbox" id="devTcToggle2" disabled>
+                <span class="slider-track"></span>
+            </label>
+        </div>
+        <div class="auto-decrypt-row" id="devTcToggle3Row">
+            <span class="decrypt-label">🔧 TC Toggle 3 (placeholder)</span>
+            <label class="alarm-toggle-switch">
+                <input type="checkbox" id="devTcToggle3" disabled>
+                <span class="slider-track"></span>
+            </label>
+        </div>
+        <div class="auto-decrypt-title" style="margin-top:8px;"><span>Trigger Scripts</span></div>
+        <div class="dev-tc-script-box" id="devTcScript1Box">
+            <div class="dev-tc-script-header">
+                <span class="dev-tc-script-title">📡 TC Script 1 (placeholder)</span>
+                <label class="alarm-toggle-switch">
+                    <input type="checkbox" id="devTcScript1Toggle" disabled>
+                    <span class="slider-track"></span>
+                </label>
+            </div>
+            <div class="dev-tc-script-body">
+                <div style="display:flex;align-items:center;gap:6px;">
+                    <span style="font-size:10px;color:var(--text-dim);">Target:</span>
+                    <select id="devTcScript1Select" class="dev-tc-select" disabled>
+                        <option value="">— none —</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="dev-tc-script-box" id="devTcReachBox">
+            <div class="dev-tc-script-header">
+                <span class="dev-tc-script-title">📡 Test reachability to a server</span>
+                <label class="alarm-toggle-switch">
+                    <input type="checkbox" id="devTcReachToggle">
+                    <span class="slider-track"></span>
+                </label>
+            </div>
+            <div class="dev-tc-script-body">
+                <div style="display:flex;align-items:center;gap:6px;">
+                    <button id="devTcReachPullBtn" class="refresh-btn-small" title="Pull get.map data">🔄</button>
+                    <span style="font-size:10px;color:var(--text-dim);">Server:</span>
+                    <select id="devTcReachSelect" class="dev-tc-select">
+                        <option value="">— pull map first —</option>
+                    </select>
+                </div>
+                <div id="devTcReachLog" style="display:none;font-size:10px;margin-top:6px;padding:6px 8px;background:var(--bg-primary);border-radius:4px;color:var(--accent-cyan);max-height:240px;overflow-y:auto;"></div>
+            </div>
+        </div>
+        <div id="devTcLog" class="dev-tc-log" style="display:none;"></div>
+    </div>
+
+    <!-- Version Info -->
+    <div style="border-top:1px solid var(--border);margin-top:8px;padding-top:8px;">
+        <div id="versionInfoSection" class="version-info-section" style="display:none;"></div>
+        <div id="webVersionNotice" style="display:none;font-size:10px;color:var(--accent-orange);text-align:center;margin-top:4px;"></div>
+        <div id="webVersionData" style="display:none;font-size:10px;color:var(--accent-orange);text-align:center;margin-top:4px;"></div>
+        <div id="systemVersionNotice" style="display:none;font-size:10px;color:var(--accent-orange);text-align:center;margin-top:4px;"></div>
+        <div id="systemVersionData" style="display:none;font-size:10px;color:var(--accent-orange);text-align:center;margin-top:4px;"></div>
+        <div id="patchVersionNotice" style="display:none;font-size:10px;color:var(--accent-orange);text-align:center;margin-top:4px;"></div>
+        <div id="patchVersionData" style="display:none;font-size:10px;color:var(--accent-orange);text-align:center;margin-top:4px;"></div>
+    </div>
+
+    <!-- Check for Updates -->
+    <div style="margin-top:8px;text-align:center;">
+        <button id="checkUpdateBtn" style="width:auto;padding:6px 14px;font-size:11px;">&#x1F504; Check for Updates</button>
+        <div id="updateResult" style="font-size:10px;color:var(--text-dim);margin-top:4px;"></div>
+    </div>
+
+    <div id="status">Status: Ready</div>
+    <div id="modifiedVersionNote">
+        <div>Modified Version based on cor3-helper ver1.7.0</div>
+        <div>By Chatgpt Sol 6.1, on 11/23/2026</div>
+    </div>
+
+</div><!-- end mainView -->
+
+
+<script src="console-logger.js"></script>
+<script src="errors.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

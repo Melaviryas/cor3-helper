@@ -26,6 +26,7 @@ import './ws-commands.js';
 
 // 7. Expeditions (request, respond, mercs, launch, collect)
 import './expeditions.js';
+import './expedition-module.js';
 
 // 8. Market requests (HOME, D4RK, SOYUZ, USOL — full, jobs-only, path-through, refresh)
 import { __cor3PostUnreachable } from './market-requests.js';

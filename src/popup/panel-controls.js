@@ -38,26 +38,29 @@ const sidePanelBtn = document.getElementById('sidePanelBtn');
         const card = makeCard(filtered);
         grid.appendChild(card);
         for (const el of filtered) wrappedEls.add(el);
+        return card;
+    }
+
+    function addGroupCard(elements, group) {
+        const card = addCard(elements);
+        if (card) card.dataset.sectionGroupCard = group;
+    }
+
+    function addExpeditionCard(elements) {
+        if (elements.some(element => element.dataset.sectionGroupContent === 'expeditions'
+            || element.id === 'expeditionsGroupToggle')) addGroupCard(elements, 'expeditions');
+        else addCard(elements);
     }
 
     const helperDiv = mainView.querySelector('#helperModeToggle')?.closest('div[style*="justify-content"]');
     const pinned = document.getElementById('pinnedTimersSection');
-    addCard([helperDiv, pinned].filter(Boolean));
-
-    addCard([mainView.querySelector('.toggles-section')].filter(Boolean));
+    addCard([document.getElementById('uiLanguageRow'), helperDiv, pinned].filter(Boolean));
 
     addCard([document.getElementById('autoJobSolverSection')].filter(Boolean));
 
     addCard([document.getElementById('autoValuableSellerSection')].filter(Boolean));
 
     const allSections = mainView.querySelectorAll(':scope > .section');
-
-    for (const s of allSections) {
-        if (s.textContent.includes('Daily Ops') && !s.querySelector('#marketContainer')) {
-            addCard([s]);
-            break;
-        }
-    }
 
     let marketsSection = null;
     for (const s of allSections) {
@@ -75,14 +78,14 @@ const sidePanelBtn = document.getElementById('sidePanelBtn');
         if (subSections.length > 0) {
             const firstGroup = [mTitle, subSections[0]].filter(Boolean);
             if (subSections.length === 1) firstGroup.push(...overlays);
-            addCard(firstGroup);
+            addGroupCard(firstGroup, 'markets');
             for (let mi = 1; mi < subSections.length; mi++) {
                 const group = [subSections[mi]];
                 if (mi === subSections.length - 1) group.push(...overlays);
-                addCard(group);
+                addGroupCard(group, 'markets');
             }
         } else {
-            addCard([marketsSection]);
+            addGroupCard([marketsSection], 'markets');
         }
     }
 
@@ -95,33 +98,7 @@ const sidePanelBtn = document.getElementById('sidePanelBtn');
     }
     if (expeditionsSection) {
         wrappedEls.add(expeditionsSection);
-        const expChildren = Array.from(expeditionsSection.children);
-        const splitPoints = [
-            { id: 'personalDroneSectionToggle', label: 'Personal Drone' },
-            { id: 'decisionsSectionToggle', label: 'Decisions' },
-            { id: 'inventorySectionToggle', label: 'Inventory' },
-            { id: 'mercenariesSectionToggle', label: 'Mercenaries' },
-            { id: 'archivedExpSectionToggle', label: 'Archived' }
-        ];
-        const splitIndices = [];
-        for (const sp of splitPoints) {
-            const idx = expChildren.findIndex(el =>
-                el.nodeType === 1 && (el.id === sp.id || el.querySelector('#' + sp.id))
-            );
-            if (idx >= 0) splitIndices.push(idx);
-        }
-        splitIndices.sort((a, b) => a - b);
-
-        if (splitIndices.length > 0) {
-            addCard(expChildren.slice(0, splitIndices[0]));
-            for (let si = 0; si < splitIndices.length; si++) {
-                const start = splitIndices[si];
-                const end = si + 1 < splitIndices.length ? splitIndices[si + 1] : expChildren.length;
-                addCard(expChildren.slice(start, end));
-            }
-        } else {
-            addCard([expeditionsSection]);
-        }
+        addCard([expeditionsSection]);
     }
 
     let loadoutSection = null;
@@ -131,6 +108,7 @@ const sidePanelBtn = document.getElementById('sidePanelBtn');
             break;
         }
     }
+
     if (loadoutSection) {
         wrappedEls.add(loadoutSection);
         const ldChildren = Array.from(loadoutSection.children);
@@ -139,23 +117,20 @@ const sidePanelBtn = document.getElementById('sidePanelBtn');
         const ldSplits = [swToggleIdx, ovToggleIdx].filter(i => i >= 0).sort((a, b) => a - b);
 
         if (ldSplits.length > 0) {
-            addCard(ldChildren.slice(0, ldSplits[0]));
+            addGroupCard(ldChildren.slice(0, ldSplits[0]), 'loadout');
             for (let li = 0; li < ldSplits.length; li++) {
                 const start = ldSplits[li];
                 const end = li + 1 < ldSplits.length ? ldSplits[li + 1] : ldChildren.length;
-                addCard(ldChildren.slice(start, end));
+                addGroupCard(ldChildren.slice(start, end), 'loadout');
             }
         } else {
-            addCard([loadoutSection]);
+            addGroupCard([loadoutSection], 'loadout');
         }
     }
 
-    for (const s of allSections) {
-        if (wrappedEls.has(s)) continue;
-        if (s.querySelector('.alarm-section-title') || s.querySelector('#alarmList')) {
-            addCard([s]);
-        }
-    }
+    addCard([document.getElementById('alarmsSection')].filter(Boolean));
+
+    addCard([document.getElementById('automationSection')].filter(Boolean));
 
     const versionEls = [];
     const vi = document.getElementById('versionInfoSection');
@@ -164,10 +139,12 @@ const sidePanelBtn = document.getElementById('sidePanelBtn');
     if (cb) { const p = cb.closest('div[style*="text-align:center"]'); if (p) versionEls.push(p); }
     const st = document.getElementById('status');
     if (st) versionEls.push(st);
+    const modifiedNote = document.getElementById('modifiedVersionNote');
+    if (modifiedNote) versionEls.push(modifiedNote);
     addCard(versionEls);
 
     if (marketsSection) marketsSection.remove();
-    if (expeditionsSection) expeditionsSection.remove();
+
     if (loadoutSection) loadoutSection.remove();
 
     const remaining = Array.from(mainView.children).filter(

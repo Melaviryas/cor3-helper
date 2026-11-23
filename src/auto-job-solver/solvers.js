@@ -10,20 +10,24 @@ import { stepTakeJob, stepCompleteJob, stepSetEndpoint, stepLogin, stepDiscoverD
 // ---- Shared decrypt flow helper ----
 // Used by File Decryption, Data Download, and Decrypt & Extract
 // Handles: equip loadout, analysis check, decrypt.file, minigame/error race, retries
-async function runDecryptFlow(fileId, fileName, job) {
+async function prepareDecryptLoadout(fileId, job) {
     // Equip decrypt-only loadout, then check power
     await ensureDecryptOnlyLoadout(job);
     await delay(humanDelay());
 
     var analysisOk = await checkDecryptPowerViaAnalysis(fileId, job);
     if (!analysisOk) {
-        log('Decrypt power still insufficient after loadout swap — attempting hardware upgrade');
+        log('Decrypt power still insufficient — rechecking the best configuration allowed by the selected mode');
         var swapOk = await tryLoadoutSwapForError('insufficient_power', job, {});
-        if (!swapOk) {
-            throw new Error('Insufficient decrypt power — no loadout can meet requirement');
+        if (!swapOk || !await checkDecryptPowerViaAnalysis(fileId, job)) {
+            throw new Error('Insufficient decrypt power — no verified loadout can meet requirement');
         }
         await delay(humanDelay());
     }
+}
+
+export async function runDecryptFlow(fileId, fileName, job) {
+    await prepareDecryptLoadout(fileId, job);
 
     ensureDecryptSolverEnabled();
     ensureIceWallSolverEnabled();
@@ -105,6 +109,7 @@ async function runDecryptFlow(fileId, fileName, job) {
             decryptRetries++;
             log('Decrypt incomplete — re-opening file to retry decryption (attempt ' + decryptRetries + '/' + MAX_DECRYPT_RETRIES + ')', 'warn');
             await delay(2000);
+            await prepareDecryptLoadout(fileId, job);
             ensureDecryptSolverEnabled();
             ensureIceWallSolverEnabled();
             ensureSimpleDecryptSolverEnabled();

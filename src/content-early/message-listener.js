@@ -669,7 +669,7 @@ export function installMessageListener() {
         }
         // Mercenary requests
         if (event.data && event.data.type === 'COR3_REQUEST_MERCENARIES') {
-            window.__cor3RequestMercenaries(null, function () {
+            window.__cor3RequestMercenaries(event.data.marketId || null, function () {
                 window.postMessage({ type: 'COR3_CORE_MERCS_DONE' }, '*');
             });
         }
